@@ -1,0 +1,60 @@
+{
+  "name": "aihelp-stack",
+  "displayName": "AIHelp Stack",
+  "version": "v0.2.1",
+  "description": "连接公司内网 AIHelp 开发平台（GitLab / Jenkins / ELK / DB / Apollo / 禅道等），技能说明各平台关系。\n\n使用前提：已连接公司内网或 VPN。公网不可用。\n\n配置方法：将下列 5 个变量写入 ~/.aihelp-stack.env（chmod 600），并在 ~/.zshrc 中 source。值不要带 Basic / Bearer / AccessKey 前缀。\n\n1. AIHELP_MCP_HOST：MCP 网关主机名或 IP。不要写 http://，不要写端口。向同事或内部文档索取。\n2. AIHELP_MCP_BASIC：account / wiki / jenkins / zentao / elk 的 HTTP Basic。生成：echo -n 'user:password' | base64 ，只填 Base64。\n3. AIHELP_GITLAB_MCP_TOKEN：公司 GitLab → Preferences → Access Tokens，权限含 api。只填 token。\n4. JUMPSERVER_MCP_ACCESSKEY：JumpServer 个人中心 API Key。填 id:secret。\n5. AIHELP_LANGFUSE_MCP_BASIC：Langfuse MCP 的 Base64(user:password)。生成方式同第 2 项。",
+  "author": {
+    "name": "AIHelp"
+  },
+  "homepage": "https://github.com/XiangYeee/aihelp-stack",
+  "repository": "https://github.com/XiangYeee/aihelp-stack",
+  "license": "UNLICENSED",
+  "logo": "assets/logo.png",
+  "keywords": [
+    "aihelp",
+    "stack",
+    "skills",
+    "mcp",
+    "gitlab",
+    "jenkins"
+  ],
+  "skills": "skills",
+  "mcpServers": "mcp.json",
+  "variables": {
+    "type": "object",
+    "properties": {
+      "AIHELP_MCP_HOST": {
+        "type": "string",
+        "title": "AIHelp MCP Host",
+        "description": "MCP 网关主机名或 IP。不要写 http://，不要写端口。向同事或内部文档索取。"
+      },
+      "AIHELP_MCP_BASIC": {
+        "type": "string",
+        "title": "AIHelp MCP Basic",
+        "description": "account/wiki/jenkins/zentao/elk 的 HTTP Basic。echo -n 'user:password' | base64，不要加 Basic 前缀。"
+      },
+      "AIHELP_GITLAB_MCP_TOKEN": {
+        "type": "string",
+        "title": "GitLab MCP Token",
+        "description": "公司 GitLab → Preferences → Access Tokens，权限含 api。只填 token，不要加 Bearer。"
+      },
+      "JUMPSERVER_MCP_ACCESSKEY": {
+        "type": "string",
+        "title": "JumpServer AccessKey",
+        "description": "JumpServer 个人中心 API Key，填 id:secret，不要加 AccessKey 前缀。"
+      },
+      "AIHELP_LANGFUSE_MCP_BASIC": {
+        "type": "string",
+        "title": "Langfuse MCP Basic",
+        "description": "Langfuse MCP 的 Base64(user:password)，不要加 Basic 前缀。"
+      }
+    },
+    "required": [
+      "AIHELP_MCP_HOST",
+      "AIHELP_MCP_BASIC",
+      "AIHELP_GITLAB_MCP_TOKEN",
+      "JUMPSERVER_MCP_ACCESSKEY",
+      "AIHELP_LANGFUSE_MCP_BASIC"
+    ]
+  }
+}

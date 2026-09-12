@@ -1,0 +1,97 @@
+{
+  "name": "aihelp-stack",
+  "version": "0.2.1",
+  "description": "连接公司内网 AIHelp 开发平台（GitLab / Jenkins / ELK / DB / Apollo / 禅道等），技能说明各平台关系。\n\n使用前提：已连接公司内网或 VPN。公网不可用。\n\n配置方法：将下列 5 个变量写入 ~/.aihelp-stack.env（chmod 600），并在 ~/.zshrc 中 source。值不要带 Basic / Bearer / AccessKey 前缀。\n\n1. AIHELP_MCP_HOST：MCP 网关主机名或 IP。不要写 http://，不要写端口。向同事或内部文档索取。\n2. AIHELP_MCP_BASIC：account / wiki / jenkins / zentao / elk 的 HTTP Basic。生成：echo -n 'user:password' | base64 ，只填 Base64。\n3. AIHELP_GITLAB_MCP_TOKEN：公司 GitLab → Preferences → Access Tokens，权限含 api。只填 token。\n4. JUMPSERVER_MCP_ACCESSKEY：JumpServer 个人中心 API Key。填 id:secret。\n5. AIHELP_LANGFUSE_MCP_BASIC：Langfuse MCP 的 Base64(user:password)。生成方式同第 2 项。",
+  "contextFileName": "GEMINI.md",
+  "settings": [
+    {
+      "name": "AIHelp MCP Host",
+      "description": "MCP 网关主机名或 IP，不要 http://，不要端口。向同事或内部文档索取。",
+      "envVar": "AIHELP_MCP_HOST",
+      "sensitive": false
+    },
+    {
+      "name": "AIHelp MCP Basic",
+      "description": "account/wiki/jenkins/zentao/elk 的 HTTP Basic。echo -n 'user:password' | base64，不要加 Basic 前缀。",
+      "envVar": "AIHELP_MCP_BASIC",
+      "sensitive": true
+    },
+    {
+      "name": "GitLab MCP Token",
+      "description": "公司 GitLab → Preferences → Access Tokens，权限含 api。只填 token，不要加 Bearer。",
+      "envVar": "AIHELP_GITLAB_MCP_TOKEN",
+      "sensitive": true
+    },
+    {
+      "name": "JumpServer AccessKey",
+      "description": "JumpServer 个人中心 API Key，填 id:secret，不要加 AccessKey 前缀。",
+      "envVar": "JUMPSERVER_MCP_ACCESSKEY",
+      "sensitive": true
+    },
+    {
+      "name": "Langfuse MCP Basic",
+      "description": "Langfuse MCP 的 Base64(user:password)，不要加 Basic 前缀。",
+      "envVar": "AIHELP_LANGFUSE_MCP_BASIC",
+      "sensitive": true
+    }
+  ],
+  "mcpServers": {
+    "zabbix-mcp": {
+      "httpUrl": "http://${AIHELP_MCP_HOST}:18100/mcp"
+    },
+    "aihelp-apollo": {
+      "httpUrl": "http://${AIHELP_MCP_HOST}:18101/mcp"
+    },
+    "aihelp-account": {
+      "httpUrl": "http://${AIHELP_MCP_HOST}:18102/mcp",
+      "headers": {
+        "Authorization": "Basic ${AIHELP_MCP_BASIC}"
+      }
+    },
+    "aihelp-wiki": {
+      "httpUrl": "http://${AIHELP_MCP_HOST}:18103/mcp",
+      "headers": {
+        "Authorization": "Basic ${AIHELP_MCP_BASIC}"
+      }
+    },
+    "aihelp-gitlab": {
+      "httpUrl": "http://${AIHELP_MCP_HOST}:18104/mcp",
+      "headers": {
+        "Authorization": "Bearer ${AIHELP_GITLAB_MCP_TOKEN}"
+      }
+    },
+    "aihelp-jenkins": {
+      "httpUrl": "http://${AIHELP_MCP_HOST}:18105/mcp",
+      "headers": {
+        "Authorization": "Basic ${AIHELP_MCP_BASIC}"
+      }
+    },
+    "aihelp-zentao": {
+      "httpUrl": "http://${AIHELP_MCP_HOST}:18106/mcp",
+      "headers": {
+        "Authorization": "Basic ${AIHELP_MCP_BASIC}"
+      }
+    },
+    "aihelp-elk": {
+      "httpUrl": "http://${AIHELP_MCP_HOST}:18107/mcp",
+      "headers": {
+        "Authorization": "Basic ${AIHELP_MCP_BASIC}"
+      }
+    },
+    "aihelp-db": {
+      "httpUrl": "http://${AIHELP_MCP_HOST}:18108/mcp"
+    },
+    "jumpserver": {
+      "httpUrl": "http://${AIHELP_MCP_HOST}:18109/mcp",
+      "headers": {
+        "Authorization": "AccessKey ${JUMPSERVER_MCP_ACCESSKEY}"
+      }
+    },
+    "aihelp-langfuse": {
+      "httpUrl": "http://${AIHELP_MCP_HOST}:18111/mcp",
+      "headers": {
+        "Authorization": "Basic ${AIHELP_LANGFUSE_MCP_BASIC}"
+      }
+    }
+  }
+}

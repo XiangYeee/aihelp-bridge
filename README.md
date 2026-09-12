@@ -1,0 +1,109 @@
+# AIHelp Stack
+
+连接公司内网 AIHelp 开发平台（GitLab / Jenkins / ELK / DB / Apollo / 禅道等），技能说明各平台关系。
+
+使用前提：已连接公司内网或 VPN。公网不可用。
+
+配置方法：将下列 5 个变量写入 `~/.aihelp-stack.env`（`chmod 600`），并在 `~/.zshrc` 中 `source`。值不要带 `Basic` / `Bearer` / `AccessKey` 前缀。
+
+1. `AIHELP_MCP_HOST`：MCP 网关主机名或 IP。不要写 `http://`，不要写端口。向同事或内部文档索取。
+2. `AIHELP_MCP_BASIC`：account / wiki / jenkins / zentao / elk 的 HTTP Basic。生成：`echo -n 'user:password' | base64`，只填 Base64。
+3. `AIHELP_GITLAB_MCP_TOKEN`：公司 GitLab → Preferences → Access Tokens，权限含 `api`。只填 token。
+4. `JUMPSERVER_MCP_ACCESSKEY`：JumpServer 个人中心 API Key。填 `id:secret`。
+5. `AIHELP_LANGFUSE_MCP_BASIC`：Langfuse MCP 的 Base64(user:password)。生成方式同第 2 项。
+
+---
+
+Connect an agent to the AIHelp development stack.
+
+Skills describe how GitLab, Jenkins, ELK, DB, Apollo, account, wiki, and ZenTao relate. MCP provides access to those platforms.
+
+Requires the **company intranet** (office network or VPN). The plugin does not work from the public internet.
+
+Included:
+
+- `aihelp-guide`: environment names and platform routing
+- `aihelp-bug`: investigation flow
+- `aihelp-ship`: test release and merge-notify copy
+- MCP client config for the intranet `aihelp-mcp` gateway
+
+Not included: `aihelp-commit`, dashboard login helpers, localhost process launch, or the MCP server processes themselves.
+
+## Prerequisite
+
+1. Join the company intranet or connect VPN.
+2. Confirm you can reach the MCP gateway: `http://$AIHELP_MCP_HOST:18102/mcp`
+3. Set the environment variables below.
+
+## Environment variables
+
+Put them in `~/.aihelp-stack.env` (mode `600`) and `source` it from your shell. Values must **not** include the HTTP scheme prefix (`Basic ` / `Bearer ` / `AccessKey `).
+
+### `AIHELP_MCP_HOST`
+
+Intranet hostname or IP of the AIHelp MCP gateway. No `http://`, no port.
+
+Ask a teammate or internal docs for the gateway address used by `aihelp-mcp`.
+
+### `AIHELP_MCP_BASIC`
+
+HTTP Basic credential for `aihelp-account`, `aihelp-wiki`, `aihelp-jenkins`, `aihelp-zentao`, `aihelp-elk`.
+
+1. Get the MCP HTTP username and password from your team (this is MCP gateway auth, not a product login).
+2. Encode `user:password` as Base64:
+
+```bash
+echo -n 'user:password' | base64
+```
+
+3. Paste only the Base64 string.
+
+### `AIHELP_GITLAB_MCP_TOKEN`
+
+GitLab Personal Access Token used by the `aihelp-gitlab` MCP (forwarded as GitLab `PRIVATE-TOKEN`).
+
+1. Open company GitLab → Preferences → Access Tokens.
+2. Create a token with `api` (needed to create and merge MRs).
+3. Paste only the token string, no `Bearer ` prefix.
+
+### `JUMPSERVER_MCP_ACCESSKEY`
+
+JumpServer API AccessKey for the `jumpserver` MCP.
+
+1. Open JumpServer → profile / API Key.
+2. Create an AccessKey.
+3. Paste `id:secret`, no `AccessKey ` prefix.
+
+### `AIHELP_LANGFUSE_MCP_BASIC`
+
+HTTP Basic credential for `aihelp-langfuse`.
+
+Same encoding as `AIHELP_MCP_BASIC`: Base64 of `user:password`, no `Basic ` prefix. Ask your team for the Langfuse MCP account.
+
+## Install
+
+仓库：https://github.com/XiangYeee/aihelp-stack
+
+```bash
+# Claude Code
+claude plugin marketplace add XiangYeee/aihelp-stack
+claude plugin install aihelp-stack@aihelp-stack
+
+# Codex
+codex plugin marketplace add XiangYeee/aihelp-stack
+
+# Gemini CLI
+gemini extensions install https://github.com/XiangYeee/aihelp-stack
+
+# Grok Build
+grok plugin marketplace add XiangYeee/aihelp-stack
+grok plugin install aihelp-stack --trust
+```
+
+Cursor: 从 Marketplace 搜索 `aihelp-stack`，或把本仓库链到 `~/.cursor/plugins/local/`。
+
+If you already configured the same MCP servers in user settings, those take precedence over the plugin.
+
+## License
+
+UNLICENSED. Intended for AIHelp employees on the company intranet.
