@@ -1,13 +1,13 @@
 {
   "name": "aihelp-stack",
-  "description": "连接公司内网 AIHelp 开发平台。须 VPN，并配置 ~/.aihelp-stack.env。",
+  "description": "内网连接 AIHelp 开发平台，须 VPN 并配置 5 个环境变量",
   "interface": {
     "displayName": "AIHelp Stack"
   },
   "plugins": [
     {
       "name": "aihelp-stack",
-      "description": "连接公司内网 AIHelp 开发平台（GitLab / Jenkins / ELK / DB / Apollo / 禅道等）。使用前须连公司内网或 VPN。配置：将 AIHELP_MCP_HOST、AIHELP_MCP_BASIC、AIHELP_GITLAB_MCP_TOKEN、JUMPSERVER_MCP_ACCESSKEY、AIHELP_LANGFUSE_MCP_BASIC 写入 ~/.aihelp-stack.env（chmod 600）并 source。HOST 向同事索取；BASIC 用 echo -n 'user:password' | base64；GitLab Token 在 Preferences → Access Tokens（api）；JumpServer 填 id:secret。值不要带 Basic/Bearer/AccessKey 前缀。",
+      "description": "连接公司内网 AIHelp 开发平台（GitLab / Jenkins / ELK / DB / Apollo / 禅道等）。须连公司内网或 VPN。\n\n将下列变量写入 ~/.aihelp-stack.env（chmod 600）并 source。值不要带 Basic / Bearer / AccessKey 前缀。\n\n1. AIHELP_MCP_HOST\nMCP 网关主机名或 IP。不要 http://，不要端口。向同事或内部文档索取。\n\n2. AIHELP_MCP_BASIC\naccount/wiki/jenkins/zentao/elk 的 HTTP Basic。echo -n 'user:password' | base64，只填 Base64。\n\n3. AIHELP_GITLAB_MCP_TOKEN\n公司 GitLab → Preferences → Access Tokens，权限含 api。只填 token。\n\n4. JUMPSERVER_MCP_ACCESSKEY\nJumpServer 个人中心 API Key。填 id:secret。\n\n5. AIHELP_LANGFUSE_MCP_BASIC\nLangfuse MCP 的 Base64(user:password)。生成方式同第 2 项。",
       "source": {
         "source": "local",
         "path": "."
