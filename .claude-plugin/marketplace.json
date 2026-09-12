@@ -17,7 +17,7 @@
       },
       "homepage": "https://github.com/XiangYeee/aihelp-stack",
       "repository": "https://github.com/XiangYeee/aihelp-stack",
-      "license": "UNLICENSED",
+      "license": "LicenseRef-AIHelp-Internal",
       "keywords": ["aihelp", "stack", "skills", "mcp", "gitlab", "jenkins"],
       "category": "development"
     }

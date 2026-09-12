@@ -7,7 +7,7 @@
   },
   "homepage": "https://github.com/XiangYeee/aihelp-stack",
   "repository": "https://github.com/XiangYeee/aihelp-stack",
-  "license": "UNLICENSED",
+  "license": "LicenseRef-AIHelp-Internal",
   "logo": "./assets/logo.png",
   "keywords": [
     "aihelp",

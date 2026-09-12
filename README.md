@@ -100,10 +100,17 @@ grok plugin marketplace add XiangYeee/aihelp-stack
 grok plugin install aihelp-stack --trust
 ```
 
-Cursor: 从 Marketplace 搜索 `aihelp-stack`，或把本仓库链到 `~/.cursor/plugins/local/`。
+Cursor 从 GitHub 导入:
+
+1. Cursor Dashboard → Plugins → Team Marketplaces → Add Marketplace / Import from Repo
+2. 仓库填 `https://github.com/XiangYeee/aihelp-stack`
+3. 导入后应看到插件 `aihelp-stack`（清单在 `.cursor-plugin/marketplace.json`）
+4. 在插件 Configure 中填写环境变量，或使用 `~/.aihelp-stack.env`
+
+完整条款见 `使用协议.md` 与 `LICENSE`。
 
 If you already configured the same MCP servers in user settings, those take precedence over the plugin.
 
 ## License
 
-UNLICENSED. Intended for AIHelp employees on the company intranet.
+LicenseRef-AIHelp-Internal. AIHelp employees on the company intranet only. See `LICENSE` and `使用协议.md`.

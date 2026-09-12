@@ -1,7 +1,35 @@
-UNLICENSED
+AIHelp Internal License
 
 Copyright (c) AIHelp. All rights reserved.
 
-This plugin is intended for AIHelp employees on the company intranet.
-Permission to use is limited to that audience. Redistribution, sublicensing,
-and use outside AIHelp are not granted.
+This license governs the AIHelp Stack plugin (the "Software"), including its
+skills, manifests, MCP client configuration, documentation, and artwork.
+
+1. Grant
+   AIHelp employees may use, copy, and install the Software on devices they
+   use for AIHelp work, solely to access AIHelp development platforms on the
+   company intranet or via company VPN.
+
+2. Conditions
+   a. Do not use the Software off the company intranet / VPN as a general
+      public product.
+   b. Do not publish secrets (tokens, passwords, intranet addresses, customer
+      webhook / email / phone data) in git, store listings, or shared logs.
+   c. Do not sublicense, sell, or redistribute the Software to non-employees.
+   d. Attribution must remain: Copyright (c) AIHelp.
+
+3. No other rights
+   Rights not expressly granted are reserved. This is not an OSI open-source
+   license and is not MIT / Apache-2.0 / GPL.
+
+4. Disclaimer
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND. AIHelp is
+   not liable for damages arising from use, including failed MCP connections,
+   incorrect releases, or data loss.
+
+5. Store listing
+   Listing the public GitHub repository as a plugin source does not expand
+   this grant. Reviewers and importers still need an AIHelp employee identity
+   and intranet access to use the Software.
+
+SPDX-License-Identifier: LicenseRef-AIHelp-Internal

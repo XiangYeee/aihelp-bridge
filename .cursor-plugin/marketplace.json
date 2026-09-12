@@ -1,0 +1,34 @@
+{
+  "name": "aihelp-stack",
+  "owner": {
+    "name": "AIHelp"
+  },
+  "metadata": {
+    "description": "连接公司内网 AIHelp 开发平台。须 VPN，并配置环境变量。详见使用协议.md。",
+    "version": "0.2.2"
+  },
+  "plugins": [
+    {
+      "name": "aihelp-stack",
+      "source": "./",
+      "description": "连接公司内网 AIHelp 开发平台（GitLab / Jenkins / ELK / DB / Apollo / 禅道等）。须 VPN，并配置 ~/.aihelp-stack.env。",
+      "version": "0.2.2",
+      "author": {
+        "name": "AIHelp"
+      },
+      "homepage": "https://github.com/XiangYeee/aihelp-stack",
+      "repository": "https://github.com/XiangYeee/aihelp-stack",
+      "license": "LicenseRef-AIHelp-Internal",
+      "logo": "assets/logo.png",
+      "keywords": [
+        "aihelp",
+        "stack",
+        "skills",
+        "mcp",
+        "gitlab",
+        "jenkins"
+      ],
+      "category": "Developer Tools"
+    }
+  ]
+}
