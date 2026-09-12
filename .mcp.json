@@ -1,61 +1,72 @@
 {
   "mcpServers": {
     "zabbix-mcp": {
-      "url": "http://${AIHELP_MCP_HOST}:18100/mcp"
+      "url": "http://${AIHELP_MCP_HOST}:18100/mcp",
+      "type": "http"
     },
     "aihelp-apollo": {
-      "url": "http://${AIHELP_MCP_HOST}:18101/mcp"
+      "url": "http://${AIHELP_MCP_HOST}:18101/mcp",
+      "type": "http"
     },
     "aihelp-account": {
       "url": "http://${AIHELP_MCP_HOST}:18102/mcp",
       "headers": {
         "Authorization": "Basic ${AIHELP_MCP_BASIC}"
-      }
+      },
+      "type": "http"
     },
     "aihelp-wiki": {
       "url": "http://${AIHELP_MCP_HOST}:18103/mcp",
       "headers": {
         "Authorization": "Basic ${AIHELP_MCP_BASIC}"
-      }
+      },
+      "type": "http"
     },
     "aihelp-gitlab": {
       "url": "http://${AIHELP_MCP_HOST}:18104/mcp",
       "headers": {
         "Authorization": "Bearer ${AIHELP_GITLAB_MCP_TOKEN}"
-      }
+      },
+      "type": "http"
     },
     "aihelp-jenkins": {
       "url": "http://${AIHELP_MCP_HOST}:18105/mcp",
       "headers": {
         "Authorization": "Basic ${AIHELP_MCP_BASIC}"
-      }
+      },
+      "type": "http"
     },
     "aihelp-zentao": {
       "url": "http://${AIHELP_MCP_HOST}:18106/mcp",
       "headers": {
         "Authorization": "Basic ${AIHELP_MCP_BASIC}"
-      }
+      },
+      "type": "http"
     },
     "aihelp-elk": {
       "url": "http://${AIHELP_MCP_HOST}:18107/mcp",
       "headers": {
         "Authorization": "Basic ${AIHELP_MCP_BASIC}"
-      }
+      },
+      "type": "http"
     },
     "aihelp-db": {
-      "url": "http://${AIHELP_MCP_HOST}:18108/mcp"
+      "url": "http://${AIHELP_MCP_HOST}:18108/mcp",
+      "type": "http"
     },
     "jumpserver": {
       "url": "http://${AIHELP_MCP_HOST}:18109/mcp",
       "headers": {
         "Authorization": "AccessKey ${JUMPSERVER_MCP_ACCESSKEY}"
-      }
+      },
+      "type": "http"
     },
     "aihelp-langfuse": {
       "url": "http://${AIHELP_MCP_HOST}:18111/mcp",
       "headers": {
         "Authorization": "Basic ${AIHELP_LANGFUSE_MCP_BASIC}"
-      }
+      },
+      "type": "http"
     }
   }
 }

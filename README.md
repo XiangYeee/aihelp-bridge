@@ -93,11 +93,17 @@ claude plugin install aihelp-stack@aihelp-stack
 codex plugin marketplace add XiangYeee/aihelp-stack
 
 # Gemini CLI
+# 安装时必须填写 5 项 settings。Gemini 不会读取 shell 里 source 的 ~/.aihelp-stack.env。
 gemini extensions install https://github.com/XiangYeee/aihelp-stack
+# 若安装时跳过了 settings：
+gemini extensions config aihelp-stack
 
 # Grok Build
+# 先加 marketplace，再按插件名安装（不要只贴仓库 URL 就结束）
 grok plugin marketplace add XiangYeee/aihelp-stack
 grok plugin install aihelp-stack --trust
+# 也可直接按仓库安装：
+# grok plugin install XiangYeee/aihelp-stack --trust
 ```
 
 Cursor 从 GitHub 导入（不要写本机环境变量）:
