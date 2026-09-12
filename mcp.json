@@ -1,57 +1,48 @@
 {
   "mcpServers": {
     "zabbix-mcp": {
-      "type": "streamable-http",
       "url": "http://${AIHELP_MCP_HOST}:18100/mcp"
     },
     "aihelp-apollo": {
-      "type": "streamable-http",
       "url": "http://${AIHELP_MCP_HOST}:18101/mcp"
     },
     "aihelp-account": {
-      "type": "streamable-http",
       "url": "http://${AIHELP_MCP_HOST}:18102/mcp",
       "headers": {
         "Authorization": "Basic ${AIHELP_MCP_BASIC}"
       }
     },
     "aihelp-wiki": {
-      "type": "streamable-http",
       "url": "http://${AIHELP_MCP_HOST}:18103/mcp",
       "headers": {
         "Authorization": "Basic ${AIHELP_MCP_BASIC}"
       }
     },
     "aihelp-gitlab": {
-      "type": "streamable-http",
       "url": "http://${AIHELP_MCP_HOST}:18104/mcp",
       "headers": {
         "Authorization": "Bearer ${AIHELP_GITLAB_MCP_TOKEN}"
       }
     },
     "aihelp-jenkins": {
-      "type": "streamable-http",
       "url": "http://${AIHELP_MCP_HOST}:18105/mcp",
       "headers": {
         "Authorization": "Basic ${AIHELP_MCP_BASIC}"
       }
     },
     "aihelp-zentao": {
-      "type": "streamable-http",
       "url": "http://${AIHELP_MCP_HOST}:18106/mcp",
       "headers": {
         "Authorization": "Basic ${AIHELP_MCP_BASIC}"
       }
     },
     "aihelp-elk": {
-      "type": "streamable-http",
       "url": "http://${AIHELP_MCP_HOST}:18107/mcp",
       "headers": {
         "Authorization": "Basic ${AIHELP_MCP_BASIC}"
       }
     },
     "aihelp-db": {
-      "type": "streamable-http",
       "url": "http://${AIHELP_MCP_HOST}:18108/mcp"
     },
     "jumpserver": {
@@ -61,7 +52,6 @@
       }
     },
     "aihelp-langfuse": {
-      "type": "streamable-http",
       "url": "http://${AIHELP_MCP_HOST}:18111/mcp",
       "headers": {
         "Authorization": "Basic ${AIHELP_LANGFUSE_MCP_BASIC}"
