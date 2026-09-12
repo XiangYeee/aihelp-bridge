@@ -1,8 +1,8 @@
 {
-  "name": "aihelp-stack",
+  "name": "AIHelp Stack",
   "displayName": "AIHelp Stack",
-  "version": "0.2.5",
-  "description": "须 VPN。配置 ~/.aihelp-stack.env（chmod 600）。值不要带 Basic/Bearer/AccessKey 前缀。 1. AIHELP_MCP_HOST：MCP 网关主机或 IP，不要 http:// 和端口，向同事索取 2. AIHELP_MCP_BASIC：echo -n 'user:password' | base64，只填 Base64 3. AIHELP_GITLAB_MCP_TOKEN：GitLab → Preferences → Access Tokens，权限含 api 4. JUMPSERVER_MCP_ACCESSKEY：JumpServer API Key，填 id:secret 5. AIHELP_LANGFUSE_MCP_BASIC：Langfuse MCP 的 Base64(user:password)",
+  "version": "0.2.6",
+  "description": "须连公司内网或 VPN。安装完成后立刻在插件 Configure 里填写下面 5 项，不要写本机环境变量。值不要带 Basic/Bearer/AccessKey 前缀。\n1. AIHELP_MCP_HOST：MCP 网关主机或 IP，不要 http:// 和端口\n2. AIHELP_MCP_BASIC：echo -n 'user:password' | base64，只填 Base64\n3. AIHELP_GITLAB_MCP_TOKEN：GitLab Access Tokens，权限含 api，只填 token\n4. JUMPSERVER_MCP_ACCESSKEY：JumpServer API Key，填 id:secret\n5. AIHELP_LANGFUSE_MCP_BASIC：Langfuse MCP 的 Base64(user:password)",
   "author": {
     "name": "AIHelp"
   },
@@ -25,28 +25,28 @@
     "properties": {
       "AIHELP_MCP_HOST": {
         "type": "string",
-        "title": "AIHelp MCP Host",
-        "description": "MCP 网关主机名或 IP。不要写 http://，不要写端口。向同事或内部文档索取。"
+        "title": "AIHELP_MCP_HOST",
+        "description": "安装后在 Configure 填写。MCP 网关主机或 IP，不要 http:// 和端口。"
       },
       "AIHELP_MCP_BASIC": {
         "type": "string",
-        "title": "AIHelp MCP Basic",
-        "description": "account/wiki/jenkins/zentao/elk 的 HTTP Basic。echo -n 'user:password' | base64，不要加 Basic 前缀。"
+        "title": "AIHELP_MCP_BASIC",
+        "description": "安装后在 Configure 填写。echo -n 'user:password' | base64，不要加 Basic 前缀。"
       },
       "AIHELP_GITLAB_MCP_TOKEN": {
         "type": "string",
-        "title": "GitLab MCP Token",
-        "description": "公司 GitLab → Preferences → Access Tokens，权限含 api。只填 token，不要加 Bearer。"
+        "title": "AIHELP_GITLAB_MCP_TOKEN",
+        "description": "安装后在 Configure 填写。GitLab Access Tokens，权限含 api，不要加 Bearer。"
       },
       "JUMPSERVER_MCP_ACCESSKEY": {
         "type": "string",
-        "title": "JumpServer AccessKey",
-        "description": "JumpServer 个人中心 API Key，填 id:secret，不要加 AccessKey 前缀。"
+        "title": "JUMPSERVER_MCP_ACCESSKEY",
+        "description": "安装后在 Configure 填写。JumpServer API Key，填 id:secret，不要加 AccessKey 前缀。"
       },
       "AIHELP_LANGFUSE_MCP_BASIC": {
         "type": "string",
-        "title": "Langfuse MCP Basic",
-        "description": "Langfuse MCP 的 Base64(user:password)，不要加 Basic 前缀。"
+        "title": "AIHELP_LANGFUSE_MCP_BASIC",
+        "description": "安装后在 Configure 填写。Langfuse MCP 的 Base64(user:password)，不要加 Basic 前缀。"
       }
     },
     "required": [

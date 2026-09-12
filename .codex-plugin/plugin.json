@@ -1,7 +1,7 @@
 {
   "name": "aihelp-stack",
-  "version": "0.2.5",
-  "description": "须 VPN。配置 ~/.aihelp-stack.env（chmod 600）。值不要带 Basic/Bearer/AccessKey 前缀。 1. AIHELP_MCP_HOST：MCP 网关主机或 IP，不要 http:// 和端口，向同事索取 2. AIHELP_MCP_BASIC：echo -n 'user:password' | base64，只填 Base64 3. AIHELP_GITLAB_MCP_TOKEN：GitLab → Preferences → Access Tokens，权限含 api 4. JUMPSERVER_MCP_ACCESSKEY：JumpServer API Key，填 id:secret 5. AIHELP_LANGFUSE_MCP_BASIC：Langfuse MCP 的 Base64(user:password)",
+  "version": "0.2.6",
+  "description": "须连公司内网或 VPN。把下面 5 项写入 ~/.aihelp-stack.env（chmod 600）并 source。值不要带 Basic/Bearer/AccessKey 前缀。\n1. AIHELP_MCP_HOST：MCP 网关主机或 IP，不要 http:// 和端口\n2. AIHELP_MCP_BASIC：echo -n 'user:password' | base64，只填 Base64\n3. AIHELP_GITLAB_MCP_TOKEN：GitLab Access Tokens，权限含 api，只填 token\n4. JUMPSERVER_MCP_ACCESSKEY：JumpServer API Key，填 id:secret\n5. AIHELP_LANGFUSE_MCP_BASIC：Langfuse MCP 的 Base64(user:password)",
   "author": {
     "name": "AIHelp"
   },
@@ -20,8 +20,8 @@
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "AIHelp Stack",
-    "shortDescription": "须 VPN。配置 5 个环境变量，详见插件说明 1～5。",
-    "longDescription": "须 VPN。配置 ~/.aihelp-stack.env（chmod 600）。值不要带 Basic/Bearer/AccessKey 前缀。 1. AIHELP_MCP_HOST：MCP 网关主机或 IP，不要 http:// 和端口，向同事索取 2. AIHELP_MCP_BASIC：echo -n 'user:password' | base64，只填 Base64 3. AIHELP_GITLAB_MCP_TOKEN：GitLab → Preferences → Access Tokens，权限含 api 4. JUMPSERVER_MCP_ACCESSKEY：JumpServer API Key，填 id:secret 5. AIHELP_LANGFUSE_MCP_BASIC：Langfuse MCP 的 Base64(user:password)",
+    "shortDescription": "须 VPN。安装后配置 5 个变量（见说明 1～5）。",
+    "longDescription": "须连公司内网或 VPN。把下面 5 项写入 ~/.aihelp-stack.env（chmod 600）并 source。值不要带 Basic/Bearer/AccessKey 前缀。\n1. AIHELP_MCP_HOST：MCP 网关主机或 IP，不要 http:// 和端口\n2. AIHELP_MCP_BASIC：echo -n 'user:password' | base64，只填 Base64\n3. AIHELP_GITLAB_MCP_TOKEN：GitLab Access Tokens，权限含 api，只填 token\n4. JUMPSERVER_MCP_ACCESSKEY：JumpServer API Key，填 id:secret\n5. AIHELP_LANGFUSE_MCP_BASIC：Langfuse MCP 的 Base64(user:password)",
     "developerName": "AIHelp",
     "category": "Developer Tools",
     "capabilities": [
