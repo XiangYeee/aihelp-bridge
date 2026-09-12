@@ -1,1 +1,61 @@
-../../mcp.json
+{
+  "mcpServers": {
+    "zabbix-mcp": {
+      "url": "http://${AIHELP_MCP_HOST}:18100/mcp"
+    },
+    "aihelp-apollo": {
+      "url": "http://${AIHELP_MCP_HOST}:18101/mcp"
+    },
+    "aihelp-account": {
+      "url": "http://${AIHELP_MCP_HOST}:18102/mcp",
+      "headers": {
+        "Authorization": "Basic ${AIHELP_MCP_BASIC}"
+      }
+    },
+    "aihelp-wiki": {
+      "url": "http://${AIHELP_MCP_HOST}:18103/mcp",
+      "headers": {
+        "Authorization": "Basic ${AIHELP_MCP_BASIC}"
+      }
+    },
+    "aihelp-gitlab": {
+      "url": "http://${AIHELP_MCP_HOST}:18104/mcp",
+      "headers": {
+        "Authorization": "Bearer ${AIHELP_GITLAB_MCP_TOKEN}"
+      }
+    },
+    "aihelp-jenkins": {
+      "url": "http://${AIHELP_MCP_HOST}:18105/mcp",
+      "headers": {
+        "Authorization": "Basic ${AIHELP_MCP_BASIC}"
+      }
+    },
+    "aihelp-zentao": {
+      "url": "http://${AIHELP_MCP_HOST}:18106/mcp",
+      "headers": {
+        "Authorization": "Basic ${AIHELP_MCP_BASIC}"
+      }
+    },
+    "aihelp-elk": {
+      "url": "http://${AIHELP_MCP_HOST}:18107/mcp",
+      "headers": {
+        "Authorization": "Basic ${AIHELP_MCP_BASIC}"
+      }
+    },
+    "aihelp-db": {
+      "url": "http://${AIHELP_MCP_HOST}:18108/mcp"
+    },
+    "jumpserver": {
+      "url": "http://${AIHELP_MCP_HOST}:18109/mcp",
+      "headers": {
+        "Authorization": "AccessKey ${JUMPSERVER_MCP_ACCESSKEY}"
+      }
+    },
+    "aihelp-langfuse": {
+      "url": "http://${AIHELP_MCP_HOST}:18111/mcp",
+      "headers": {
+        "Authorization": "Basic ${AIHELP_LANGFUSE_MCP_BASIC}"
+      }
+    }
+  }
+}
