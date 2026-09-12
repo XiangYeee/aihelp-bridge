@@ -4,7 +4,7 @@
 
 使用前提：已连接公司内网或 VPN。公网不可用。
 
-配置方法：将下列 5 个变量写入 `~/.aihelp-stack.env`（`chmod 600`），并在 `~/.zshrc` 中 `source`。值不要带 `Basic` / `Bearer` / `AccessKey` 前缀。
+配置方法：将下列 5 项写入本机环境变量。值不要带 `Basic` / `Bearer` / `AccessKey` 前缀。
 
 1. `AIHELP_MCP_HOST`：MCP 网关主机名或 IP。不要写 `http://`，不要写端口。向同事或内部文档索取。
 2. `AIHELP_MCP_BASIC`：account / wiki / jenkins / zentao / elk 的 HTTP Basic。生成：`echo -n 'user:password' | base64`，只填 Base64。
@@ -37,7 +37,7 @@ Not included: `aihelp-commit`, dashboard login helpers, localhost process launch
 
 ## Environment variables
 
-Put them in `~/.aihelp-stack.env` (mode `600`) and `source` it from your shell. Values must **not** include the HTTP scheme prefix (`Basic ` / `Bearer ` / `AccessKey `).
+Export them as environment variables in your shell. Values must **not** include the HTTP scheme prefix (`Basic ` / `Bearer ` / `AccessKey `).
 
 ### `AIHELP_MCP_HOST`
 
@@ -93,7 +93,7 @@ claude plugin install aihelp-stack@aihelp-stack
 codex plugin marketplace add XiangYeee/aihelp-stack
 
 # Gemini CLI
-# 安装时必须填写 5 项 settings。Gemini 不会读取 shell 里 source 的 ~/.aihelp-stack.env。
+# 安装时必须填写 5 项 settings。Gemini 不会读取本机环境变量。
 gemini extensions install https://github.com/XiangYeee/aihelp-stack
 # 若安装时跳过了 settings：
 gemini extensions config aihelp-stack

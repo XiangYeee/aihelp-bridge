@@ -1,13 +1,13 @@
 {
   "name": "aihelp-stack",
-  "description": "须 VPN。安装后配置 5 个变量（见说明 1～5）。",
+  "description": "须 VPN。将 5 项写入环境变量（见说明 1～5）。",
   "interface": {
     "displayName": "AIHelp Stack"
   },
   "plugins": [
     {
       "name": "aihelp-stack",
-      "description": "须连公司内网或 VPN。配置 5 个变量，值不要带 Basic/Bearer/AccessKey 前缀。\n1. AIHELP_MCP_HOST：MCP 网关主机或 IP，不要 http:// 和端口，向同事索取\n2. AIHELP_MCP_BASIC：echo -n 'user:password' | base64，只填 Base64\n3. AIHELP_GITLAB_MCP_TOKEN：GitLab Access Tokens，权限含 api，只填 token\n4. JUMPSERVER_MCP_ACCESSKEY：JumpServer API Key，填 id:secret\n5. AIHELP_LANGFUSE_MCP_BASIC：Langfuse MCP 的 Base64(user:password)",
+      "description": "须连公司内网或 VPN。将下面 5 项写入环境变量，值不要带 Basic/Bearer/AccessKey 前缀。\n1. AIHELP_MCP_HOST：MCP 网关主机或 IP，不要 http:// 和端口，向同事索取\n2. AIHELP_MCP_BASIC：echo -n 'user:password' | base64，只填 Base64\n3. AIHELP_GITLAB_MCP_TOKEN：GitLab Access Tokens，权限含 api，只填 token\n4. JUMPSERVER_MCP_ACCESSKEY：JumpServer API Key，填 id:secret\n5. AIHELP_LANGFUSE_MCP_BASIC：Langfuse MCP 的 Base64(user:password)",
       "source": {
         "source": "local",
         "path": "./"
