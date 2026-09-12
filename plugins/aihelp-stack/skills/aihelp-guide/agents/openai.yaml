@@ -1,0 +1,4 @@
+interface:
+  display_name: "aihelp-guide"
+  short_description: "AIHelp 环境、流程与工具路由技能，按显式 AIHelp 请求或环境/工具路由需求触发。"
+  default_prompt: "按 AIHelp 环境、流程与工具路由规则，判断这个任务应使用哪个环境、MCP 或专门技能。"
