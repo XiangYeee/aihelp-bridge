@@ -9,18 +9,34 @@
       "type": "http"
     },
     "aihelp-account": {
-      "url": "http://${AIHELP_MCP_HOST}:18102/mcp",
-      "headers": {
-        "Authorization": "Basic ${AIHELP_MCP_USER}:${AIHELP_MCP_PASS}"
-      },
-      "type": "http"
+      "command": "python3",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/scripts/mcp_http_stdio.py",
+        "--port",
+        "18102",
+        "--auth",
+        "mcp"
+      ],
+      "env": {
+        "AIHELP_MCP_HOST": "${AIHELP_MCP_HOST}",
+        "AIHELP_MCP_USER": "${AIHELP_MCP_USER}",
+        "AIHELP_MCP_PASS": "${AIHELP_MCP_PASS}"
+      }
     },
     "aihelp-wiki": {
-      "url": "http://${AIHELP_MCP_HOST}:18103/mcp",
-      "headers": {
-        "Authorization": "Basic ${AIHELP_MCP_USER}:${AIHELP_MCP_PASS}"
-      },
-      "type": "http"
+      "command": "python3",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/scripts/mcp_http_stdio.py",
+        "--port",
+        "18103",
+        "--auth",
+        "mcp"
+      ],
+      "env": {
+        "AIHELP_MCP_HOST": "${AIHELP_MCP_HOST}",
+        "AIHELP_MCP_USER": "${AIHELP_MCP_USER}",
+        "AIHELP_MCP_PASS": "${AIHELP_MCP_PASS}"
+      }
     },
     "aihelp-gitlab": {
       "url": "http://${AIHELP_MCP_HOST}:18104/mcp",
@@ -30,25 +46,49 @@
       "type": "http"
     },
     "aihelp-jenkins": {
-      "url": "http://${AIHELP_MCP_HOST}:18105/mcp",
-      "headers": {
-        "Authorization": "Basic ${AIHELP_MCP_USER}:${AIHELP_MCP_PASS}"
-      },
-      "type": "http"
+      "command": "python3",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/scripts/mcp_http_stdio.py",
+        "--port",
+        "18105",
+        "--auth",
+        "mcp"
+      ],
+      "env": {
+        "AIHELP_MCP_HOST": "${AIHELP_MCP_HOST}",
+        "AIHELP_MCP_USER": "${AIHELP_MCP_USER}",
+        "AIHELP_MCP_PASS": "${AIHELP_MCP_PASS}"
+      }
     },
     "aihelp-zentao": {
-      "url": "http://${AIHELP_MCP_HOST}:18106/mcp",
-      "headers": {
-        "Authorization": "Basic ${AIHELP_MCP_USER}:${AIHELP_MCP_PASS}"
-      },
-      "type": "http"
+      "command": "python3",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/scripts/mcp_http_stdio.py",
+        "--port",
+        "18106",
+        "--auth",
+        "mcp"
+      ],
+      "env": {
+        "AIHELP_MCP_HOST": "${AIHELP_MCP_HOST}",
+        "AIHELP_MCP_USER": "${AIHELP_MCP_USER}",
+        "AIHELP_MCP_PASS": "${AIHELP_MCP_PASS}"
+      }
     },
     "aihelp-elk": {
-      "url": "http://${AIHELP_MCP_HOST}:18107/mcp",
-      "headers": {
-        "Authorization": "Basic ${AIHELP_MCP_USER}:${AIHELP_MCP_PASS}"
-      },
-      "type": "http"
+      "command": "python3",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/scripts/mcp_http_stdio.py",
+        "--port",
+        "18107",
+        "--auth",
+        "mcp"
+      ],
+      "env": {
+        "AIHELP_MCP_HOST": "${AIHELP_MCP_HOST}",
+        "AIHELP_MCP_USER": "${AIHELP_MCP_USER}",
+        "AIHELP_MCP_PASS": "${AIHELP_MCP_PASS}"
+      }
     },
     "aihelp-db": {
       "url": "http://${AIHELP_MCP_HOST}:18108/mcp",
@@ -62,11 +102,19 @@
       "type": "http"
     },
     "aihelp-langfuse": {
-      "url": "http://${AIHELP_MCP_HOST}:18111/mcp",
-      "headers": {
-        "Authorization": "Basic ${AIHELP_LANGFUSE_MCP_USER}:${AIHELP_LANGFUSE_MCP_PASS}"
-      },
-      "type": "http"
+      "command": "python3",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/scripts/mcp_http_stdio.py",
+        "--port",
+        "18111",
+        "--auth",
+        "langfuse"
+      ],
+      "env": {
+        "AIHELP_MCP_HOST": "${AIHELP_MCP_HOST}",
+        "AIHELP_LANGFUSE_MCP_USER": "${AIHELP_LANGFUSE_MCP_USER}",
+        "AIHELP_LANGFUSE_MCP_PASS": "${AIHELP_LANGFUSE_MCP_PASS}"
+      }
     }
   }
 }

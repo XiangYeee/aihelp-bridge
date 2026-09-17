@@ -1,6 +1,6 @@
 {
   "name": "aihelp-bridge",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "须连公司内网或 VPN。将下面各项写入环境变量，值不要带 Basic/Bearer/AccessKey 前缀。\n1. AIHELP_MCP_HOST：MCP 网关主机或 IP，不要 http:// 和端口，向同事索取\n2. AIHELP_MCP_USER：MCP HTTP 用户名\n3. AIHELP_MCP_PASS：MCP HTTP 密码，填明文，不要 Base64\n4. AIHELP_GITLAB_MCP_TOKEN：GitLab Access Tokens，权限含 api，只填 token\n5. JUMPSERVER_MCP_ACCESSKEY：JumpServer API Key，填 id:secret\n6. AIHELP_LANGFUSE_MCP_USER：Langfuse MCP 用户名\n7. AIHELP_LANGFUSE_MCP_PASS：Langfuse MCP 密码，填明文，不要 Base64",
   "homepage": "https://github.com/XiangYeee/aihelp-bridge",
   "license": "LicenseRef-AIHelp-Internal",

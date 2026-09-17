@@ -4,7 +4,7 @@
 
 使用前提：已连接公司内网或 VPN。公网不可用。
 
-配置方法：将下列项写入本机环境变量。值不要带 `Basic` / `Bearer` / `AccessKey` 前缀。密码填明文，插件会拼成 MCP 鉴权头，不要自己做 Base64。
+配置方法：将下列项写入本机环境变量。值不要带 `Basic` / `Bearer` / `AccessKey` 前缀。密码填明文；插件会 Base64 后填标准 `Authorization: Basic <base64>`，MCP 服务端鉴权方式不变。
 
 1. `AIHELP_MCP_HOST`：MCP 网关主机名或 IP。不要写 `http://`，不要写端口。向同事或内部文档索取。
 2. `AIHELP_MCP_USER`：account / wiki / jenkins / zentao / elk 的 HTTP 用户名。
@@ -51,7 +51,7 @@ Ask a teammate or internal docs for the gateway address used by `aihelp-mcp`.
 
 HTTP username and password for `aihelp-account`, `aihelp-wiki`, `aihelp-jenkins`, `aihelp-zentao`, `aihelp-elk`.
 
-Get the MCP HTTP username and password from your team (this is MCP gateway auth, not a product login). Paste them in plaintext. The plugin sends `Authorization: Basic user:pass`; do not Base64-encode them.
+Get the MCP HTTP username and password from your team (this is MCP gateway auth, not a product login). Paste them in plaintext. The plugin Base64-encodes them and sends standard `Authorization: Basic <base64>`. Do not encode them yourself.
 
 ### `AIHELP_GITLAB_MCP_TOKEN`
 
@@ -73,7 +73,7 @@ JumpServer API AccessKey for the `jumpserver` MCP.
 
 HTTP username and password for `aihelp-langfuse`.
 
-Paste them in plaintext, no `Basic ` prefix and no Base64. Ask your team for the Langfuse MCP account.
+Paste them in plaintext. The plugin Base64-encodes them into standard HTTP Basic. Ask your team for the Langfuse MCP account.
 
 ## Install
 
