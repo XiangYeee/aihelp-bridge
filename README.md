@@ -1,4 +1,4 @@
-# AIHelp Stack
+# AIHelp Bridge
 
 连接公司内网 AIHelp 开发平台（GitLab / Jenkins / ELK / DB / Apollo / 禅道等），技能说明各平台关系。
 
@@ -14,7 +14,7 @@
 
 ---
 
-Connect an agent to the AIHelp development stack.
+Connect an agent to AIHelp Bridge.
 
 Skills describe how GitLab, Jenkins, ELK, DB, Apollo, account, wiki, and ZenTao relate. MCP provides access to those platforms.
 
@@ -82,35 +82,35 @@ Same encoding as `AIHELP_MCP_BASIC`: Base64 of `user:password`, no `Basic ` pref
 
 ## Install
 
-仓库：https://github.com/XiangYeee/aihelp-stack
+仓库：https://github.com/XiangYeee/aihelp-bridge
 
 ```bash
 # Claude Code
-claude plugin marketplace add XiangYeee/aihelp-stack
-claude plugin install aihelp-stack@aihelp-stack
+claude plugin marketplace add XiangYeee/aihelp-bridge
+claude plugin install aihelp-bridge@aihelp-bridge
 
 # Codex
-codex plugin marketplace add XiangYeee/aihelp-stack
+codex plugin marketplace add XiangYeee/aihelp-bridge
 
 # Gemini CLI
 # 安装时必须填写 5 项 settings。Gemini 不会读取本机环境变量。
-gemini extensions install https://github.com/XiangYeee/aihelp-stack
+gemini extensions install https://github.com/XiangYeee/aihelp-bridge
 # 若安装时跳过了 settings：
-gemini extensions config aihelp-stack
+gemini extensions config aihelp-bridge
 
 # Grok Build
 # 先加 marketplace，再按插件名安装（不要只贴仓库 URL 就结束）
-grok plugin marketplace add XiangYeee/aihelp-stack
-grok plugin install aihelp-stack --trust
+grok plugin marketplace add XiangYeee/aihelp-bridge
+grok plugin install aihelp-bridge --trust
 # 也可直接按仓库安装：
-# grok plugin install XiangYeee/aihelp-stack --trust
+# grok plugin install XiangYeee/aihelp-bridge --trust
 ```
 
 Cursor 从 GitHub 加个人 marketplace（不要走 Team Marketplace，不要写本机环境变量）:
 
-1. 若以前加过失败或旧版，先在 Customize → Plugins 里删掉 `aihelp-stack`，再重载窗口。
-2. Customize → Plugins → Add marketplace，仓库填 `https://github.com/XiangYeee/aihelp-stack`
-3. 或在 Agent 聊天执行：`/add-plugin https://github.com/XiangYeee/aihelp-stack`
+1. 若以前加过失败、旧版或 `aihelp-stack`，先在 Customize → Plugins 里删掉旧插件，再重载窗口。
+2. Customize → Plugins → Add marketplace，仓库填 `https://github.com/XiangYeee/aihelp-bridge`
+3. 或在 Agent 聊天执行：`/add-plugin https://github.com/XiangYeee/aihelp-bridge`
 4. 导入后立刻打开插件 Configure，填写 5 项：AIHELP_MCP_HOST、AIHELP_MCP_BASIC、AIHELP_GITLAB_MCP_TOKEN、JUMPSERVER_MCP_ACCESSKEY、AIHELP_LANGFUSE_MCP_BASIC
 5. 值不要带 Basic / Bearer / AccessKey 前缀
 

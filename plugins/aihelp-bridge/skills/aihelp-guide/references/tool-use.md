@@ -78,7 +78,7 @@
 
 ### aihelp-zentao MCP
 
-- 查询禅道内容时，直接使用 `aihelp-zentao` MCP。
+- 拉取禅道信息（需求/Bug 的标题、字段、正文、评论、时间线）和正文配图时，优先使用 `aihelp-zentao` MCP，不要先打开禅道网页或用浏览器截图。
 - 禅道需求有钉钉文档时，使用 `chrome-devtools` MCP 复用当前浏览器登录态获取文档内容。
 
 ### aihelp-gitlab MCP
