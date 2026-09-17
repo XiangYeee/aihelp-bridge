@@ -101,16 +101,32 @@ def _write_stdio_message(payload: bytes) -> None:
     sys.stdout.buffer.flush()
 
 
-def _parse_http_body(content_type: str, raw: bytes) -> bytes:
-    text = raw.decode("utf-8", errors="replace")
-    if "text/event-stream" in (content_type or "").lower():
-        chunks = []
-        for line in text.splitlines():
-            if line.startswith("data:"):
-                chunks.append(line[5:].strip())
-        if chunks:
-            return chunks[-1].encode("utf-8")
-    return raw
+def _read_sse_data(resp) -> bytes:
+    """
+    从 streamable-http 的 SSE 响应中读取第一条 message。
+
+    方法用途与业务含义：
+    FastMCP 的 POST /mcp 常返回 `text/event-stream`，连接会保持打开。
+    不能 `read()` 等到 EOF，否则会卡到 MCP 启动超时。读到第一条 `data:` 事件即可。
+
+    参数说明：
+    - resp: urllib 响应对象，需支持 readline。
+
+    返回值说明：
+    - SSE `data:` 字段的原始 JSON 字节。没有 data 时返回空字节。
+    """
+
+    chunks: list[str] = []
+    while True:
+        line = resp.readline()
+        if not line:
+            break
+        text = line.decode("utf-8", errors="replace").rstrip("\r\n")
+        if text.startswith("data:"):
+            chunks.append(text[5:].lstrip())
+        elif text == "" and chunks:
+            break
+    return "\n".join(chunks).encode("utf-8")
 
 
 def _post_json(url: str, body: bytes, headers: dict[str, str], session_id: str | None) -> tuple[bytes, str | None]:
@@ -121,7 +137,11 @@ def _post_json(url: str, body: bytes, headers: dict[str, str], session_id: str |
     try:
         with urllib.request.urlopen(request, timeout=120) as resp:
             new_session = resp.headers.get("Mcp-Session-Id") or session_id
-            payload = _parse_http_body(resp.headers.get("Content-Type") or "", resp.read())
+            content_type = resp.headers.get("Content-Type") or ""
+            if "text/event-stream" in content_type.lower():
+                payload = _read_sse_data(resp)
+            else:
+                payload = resp.read()
             return payload, new_session
     except urllib.error.HTTPError as exc:
         detail = exc.read().decode("utf-8", errors="replace")
