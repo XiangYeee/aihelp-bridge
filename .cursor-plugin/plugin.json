@@ -1,0 +1,60 @@
+{
+  "name": "aihelp-bridge",
+  "displayName": "AIHelp Bridge",
+  "version": "0.4.2",
+  "description": "须连公司内网或 VPN。安装完成后立刻在插件 Configure 里填写下面 5 项，不要写本机环境变量，值不要带 Basic/Bearer/AccessKey 前缀。\n1. AIHELP_MCP_HOST：MCP 网关主机或 IP，不要 http:// 和端口\n2. AIHELP_MCP_BASIC：echo -n 'user:password' | base64，只填 Base64\n3. AIHELP_GITLAB_MCP_TOKEN：GitLab Access Tokens，权限含 api，只填 token\n4. JUMPSERVER_MCP_ACCESSKEY：JumpServer API Key，填 id:secret\n5. AIHELP_LANGFUSE_MCP_BASIC：Langfuse MCP 的 Base64(user:password)",
+  "author": {
+    "name": "AIHelp"
+  },
+  "homepage": "https://github.com/XiangYeee/aihelp-bridge",
+  "repository": "https://github.com/XiangYeee/aihelp-bridge",
+  "license": "LicenseRef-AIHelp-Internal",
+  "logo": "assets/logo.png",
+  "keywords": [
+    "aihelp",
+    "bridge",
+    "skills",
+    "mcp",
+    "gitlab",
+    "jenkins"
+  ],
+  "skills": "skills",
+  "mcpServers": "mcp.json",
+  "variables": {
+    "type": "object",
+    "properties": {
+      "AIHELP_MCP_HOST": {
+        "type": "string",
+        "title": "AIHELP_MCP_HOST",
+        "description": "安装后在 Configure 填写。MCP 网关主机或 IP，不要 http:// 和端口。"
+      },
+      "AIHELP_MCP_BASIC": {
+        "type": "string",
+        "title": "AIHELP_MCP_BASIC",
+        "description": "安装后在 Configure 填写。echo -n 'user:password' | base64，不要加 Basic 前缀。"
+      },
+      "AIHELP_GITLAB_MCP_TOKEN": {
+        "type": "string",
+        "title": "AIHELP_GITLAB_MCP_TOKEN",
+        "description": "安装后在 Configure 填写。GitLab Access Tokens，权限含 api，不要加 Bearer。"
+      },
+      "JUMPSERVER_MCP_ACCESSKEY": {
+        "type": "string",
+        "title": "JUMPSERVER_MCP_ACCESSKEY",
+        "description": "安装后在 Configure 填写。JumpServer API Key，填 id:secret，不要加 AccessKey 前缀。"
+      },
+      "AIHELP_LANGFUSE_MCP_BASIC": {
+        "type": "string",
+        "title": "AIHELP_LANGFUSE_MCP_BASIC",
+        "description": "安装后在 Configure 填写。Langfuse MCP 的 Base64(user:password)，不要加 Basic 前缀。"
+      }
+    },
+    "required": [
+      "AIHELP_MCP_HOST",
+      "AIHELP_MCP_BASIC",
+      "AIHELP_GITLAB_MCP_TOKEN",
+      "JUMPSERVER_MCP_ACCESSKEY",
+      "AIHELP_LANGFUSE_MCP_BASIC"
+    ]
+  }
+}
