@@ -103,11 +103,10 @@ grok plugin install aihelp-bridge --trust
 
 Cursor 从 GitHub 加个人 marketplace（不要走 Team Marketplace，不要写本机环境变量）:
 
-1. 若以前加过失败、旧版或 `aihelp-stack`，先在 Customize → Plugins 里删掉旧插件，再重载窗口。
-2. Customize → Plugins → Add marketplace，仓库填 `https://github.com/XiangYeee/aihelp-bridge`
-3. 或在 Agent 聊天执行：`/add-plugin https://github.com/XiangYeee/aihelp-bridge`
-4. 导入后立刻打开插件 Configure，填写：AIHELP_MCP_HOST、AIHELP_MCP_USER、AIHELP_MCP_PASS、AIHELP_GITLAB_MCP_TOKEN、JUMPSERVER_MCP_ACCESSKEY、AIHELP_LANGFUSE_MCP_USER、AIHELP_LANGFUSE_MCP_PASS
-5. 值不要带 Basic / Bearer / AccessKey 前缀
+1. Customize → Plugins → Add marketplace，仓库填 `https://github.com/XiangYeee/aihelp-bridge`
+2. 或在 Agent 聊天执行：`/add-plugin https://github.com/XiangYeee/aihelp-bridge`
+3. 导入后立刻打开插件 Configure，填写：AIHELP_MCP_HOST、AIHELP_MCP_USER、AIHELP_MCP_PASS、AIHELP_GITLAB_MCP_TOKEN、JUMPSERVER_MCP_ACCESSKEY、AIHELP_LANGFUSE_MCP_USER、AIHELP_LANGFUSE_MCP_PASS
+4. 值不要带 Basic / Bearer / AccessKey 前缀
 
 完整条款见 `使用协议.md` 与 `LICENSE`。
 
