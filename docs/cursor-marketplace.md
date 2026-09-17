@@ -19,6 +19,8 @@ Cursor 云端还在用：仓库 `XiangYeee/aihelp-stack`，目录 `plugins/aihel
 
 不要再用 `https://github.com/XiangYeee/aihelp-stack`。
 
+Cursor 个人 marketplace 第一次加成功后，经常把快照钉在旧 commit 上。只推 `main` 不够，上次能加上是因为同时打了 GitHub Release（当时 `v0.2.11`）。改 Cursor 清单后必须打新 Release，再删掉旧市场、Reload、重加。
+
 ## 本机缓存
 
 导入失败时先清，再 Reload：
