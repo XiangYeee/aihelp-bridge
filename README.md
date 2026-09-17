@@ -114,6 +114,8 @@ Cursor 从 GitHub 加个人 marketplace（不要走 Team Marketplace，不要写
 4. 导入后立刻打开插件 Configure，填写 5 项：AIHELP_MCP_HOST、AIHELP_MCP_BASIC、AIHELP_GITLAB_MCP_TOKEN、JUMPSERVER_MCP_ACCESSKEY、AIHELP_LANGFUSE_MCP_BASIC
 5. 值不要带 Basic / Bearer / AccessKey 前缀
 
+Cursor 导入失败见 `docs/cursor-marketplace.md`。不要等几天，云端旧市场记录不会自己改名。
+
 完整条款见 `使用协议.md` 与 `LICENSE`。
 
 If you already configured the same MCP servers in user settings, those take precedence over the plugin.
