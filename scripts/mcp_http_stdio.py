@@ -70,12 +70,18 @@ def _auth_header(auth: str) -> str | None:
     return f"Basic {encode_basic(user, password)}"
 
 
+_stdio_lsp_framing = False
+
+
 def _read_stdio_message() -> bytes | None:
+    global _stdio_lsp_framing
     first = sys.stdin.buffer.readline()
     if not first:
         return None
     if first.lstrip().startswith(b"{"):
+        _stdio_lsp_framing = False
         return first.strip()
+    _stdio_lsp_framing = True
     headers = first
     while True:
         line = sys.stdin.buffer.readline()
@@ -96,8 +102,13 @@ def _read_stdio_message() -> bytes | None:
 
 
 def _write_stdio_message(payload: bytes) -> None:
-    sys.stdout.buffer.write(f"Content-Length: {len(payload)}\r\n\r\n".encode("ascii"))
-    sys.stdout.buffer.write(payload)
+    if _stdio_lsp_framing:
+        sys.stdout.buffer.write(f"Content-Length: {len(payload)}\r\n\r\n".encode("ascii"))
+        sys.stdout.buffer.write(payload)
+    else:
+        sys.stdout.buffer.write(payload)
+        if not payload.endswith(b"\n"):
+            sys.stdout.buffer.write(b"\n")
     sys.stdout.buffer.flush()
 
 
