@@ -19,6 +19,8 @@ Cursor 云端还在用：仓库 `XiangYeee/aihelp-stack`，目录 `plugins/aihel
 
 不要再用 `https://github.com/XiangYeee/aihelp-stack`。
 
+界面里如果出现两个都叫 AIHelp Bridge，是清单里曾经同时列出了两份插件、显示名又都写成 Bridge。现在只列 `aihelp-bridge`。若还看到「AIHelp Bridge（旧）」，删那条。
+
 Cursor 个人 marketplace 第一次加成功后，经常把快照钉在旧 commit 上。只推 `main` 不够，上次能加上是因为同时打了 GitHub Release（当时 `v0.2.11`）。改 Cursor 清单后必须打新 Release，再删掉旧市场、Reload、重加。
 
 ## 本机缓存
