@@ -4,15 +4,13 @@
 
 使用前提：已连接公司内网或 VPN。公网不可用。
 
-配置方法：将下列项写入本机环境变量。值不要带 `Basic` / `Bearer` / `AccessKey` 前缀。密码填明文；插件会 Base64 后填标准 `Authorization: Basic <base64>`，MCP 服务端鉴权方式不变。
+配置方法：将下列 5 项写入本机环境变量。值不要带 `Basic` / `Bearer` / `AccessKey` 前缀。
 
 1. `AIHELP_MCP_HOST`：MCP 网关主机名或 IP。不要写 `http://`，不要写端口。向同事或内部文档索取。
-2. `AIHELP_MCP_USER`：account / wiki / jenkins / zentao / elk 的 HTTP 用户名。
-3. `AIHELP_MCP_PASS`：上述服务的 HTTP 密码，填明文。
-4. `AIHELP_GITLAB_MCP_TOKEN`：公司 GitLab → Preferences → Access Tokens，权限含 `api`。只填 token。
-5. `JUMPSERVER_MCP_ACCESSKEY`：JumpServer 个人中心 API Key。填 `id:secret`。
-6. `AIHELP_LANGFUSE_MCP_USER`：Langfuse MCP 用户名。
-7. `AIHELP_LANGFUSE_MCP_PASS`：Langfuse MCP 密码，填明文。
+2. `AIHELP_MCP_BASIC`：account / wiki / jenkins / zentao / elk 的 HTTP Basic。生成：`echo -n 'user:password' | base64`，只填 Base64。
+3. `AIHELP_GITLAB_MCP_TOKEN`：公司 GitLab → Preferences → Access Tokens，权限含 `api`。只填 token。
+4. `JUMPSERVER_MCP_ACCESSKEY`：JumpServer 个人中心 API Key。填 `id:secret`。
+5. `AIHELP_LANGFUSE_MCP_BASIC`：Langfuse MCP 的 Base64(user:password)。生成方式同第 2 项。
 
 ---
 
@@ -47,11 +45,18 @@ Intranet hostname or IP of the AIHelp MCP gateway. No `http://`, no port.
 
 Ask a teammate or internal docs for the gateway address used by `aihelp-mcp`.
 
-### `AIHELP_MCP_USER` / `AIHELP_MCP_PASS`
+### `AIHELP_MCP_BASIC`
 
-HTTP username and password for `aihelp-account`, `aihelp-wiki`, `aihelp-jenkins`, `aihelp-zentao`, `aihelp-elk`.
+HTTP Basic credential for `aihelp-account`, `aihelp-wiki`, `aihelp-jenkins`, `aihelp-zentao`, `aihelp-elk`.
 
-Get the MCP HTTP username and password from your team (this is MCP gateway auth, not a product login). Paste them in plaintext. The plugin Base64-encodes them and sends standard `Authorization: Basic <base64>`. Do not encode them yourself.
+1. Get the MCP HTTP username and password from your team (this is MCP gateway auth, not a product login).
+2. Encode `user:password` as Base64:
+
+```bash
+echo -n 'user:password' | base64
+```
+
+3. Paste only the Base64 string.
 
 ### `AIHELP_GITLAB_MCP_TOKEN`
 
@@ -69,11 +74,11 @@ JumpServer API AccessKey for the `jumpserver` MCP.
 2. Create an AccessKey.
 3. Paste `id:secret`, no `AccessKey ` prefix.
 
-### `AIHELP_LANGFUSE_MCP_USER` / `AIHELP_LANGFUSE_MCP_PASS`
+### `AIHELP_LANGFUSE_MCP_BASIC`
 
-HTTP username and password for `aihelp-langfuse`.
+HTTP Basic credential for `aihelp-langfuse`.
 
-Paste them in plaintext. The plugin Base64-encodes them into standard HTTP Basic. Ask your team for the Langfuse MCP account.
+Same encoding as `AIHELP_MCP_BASIC`: Base64 of `user:password`, no `Basic ` prefix. Ask your team for the Langfuse MCP account.
 
 ## Install
 
@@ -88,7 +93,7 @@ claude plugin install aihelp-bridge@aihelp-bridge
 codex plugin marketplace add XiangYeee/aihelp-bridge
 
 # Gemini CLI
-# 安装时必须填写 settings。Gemini 不会读取本机环境变量。
+# 安装时必须填写 5 项 settings。Gemini 不会读取本机环境变量。
 gemini extensions install https://github.com/XiangYeee/aihelp-bridge
 # 若安装时跳过了 settings：
 gemini extensions config aihelp-bridge
@@ -105,7 +110,7 @@ Cursor 从 GitHub 加个人 marketplace（不要走 Team Marketplace，不要写
 
 1. Customize → Plugins → Add marketplace，仓库填 `https://github.com/XiangYeee/aihelp-bridge`
 2. 或在 Agent 聊天执行：`/add-plugin https://github.com/XiangYeee/aihelp-bridge`
-3. 导入后立刻打开插件 Configure，填写：AIHELP_MCP_HOST、AIHELP_MCP_USER、AIHELP_MCP_PASS、AIHELP_GITLAB_MCP_TOKEN、JUMPSERVER_MCP_ACCESSKEY、AIHELP_LANGFUSE_MCP_USER、AIHELP_LANGFUSE_MCP_PASS
+3. 导入后立刻打开插件 Configure，填写 5 项：AIHELP_MCP_HOST、AIHELP_MCP_BASIC、AIHELP_GITLAB_MCP_TOKEN、JUMPSERVER_MCP_ACCESSKEY、AIHELP_LANGFUSE_MCP_BASIC
 4. 值不要带 Basic / Bearer / AccessKey 前缀
 
 完整条款见 `使用协议.md` 与 `LICENSE`。

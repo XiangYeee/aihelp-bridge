@@ -4,14 +4,14 @@
     "name": "AIHelp"
   },
   "metadata": {
-    "description": "须 VPN。安装后立刻在插件 Configure 填写用户名密码等，不要写本机环境变量。",
-    "version": "0.4.1"
+    "description": "须 VPN。安装后立刻在插件 Configure 填写 5 项，不要写本机环境变量。",
+    "version": "0.4.2"
   },
   "plugins": [
     {
       "name": "aihelp-bridge",
       "source": "./plugins/aihelp-bridge",
-      "description": "须连公司内网或 VPN。安装完成后立刻在插件 Configure 里填写用户名密码等，不要写本机环境变量。"
+      "description": "须连公司内网或 VPN。安装完成后立刻在插件 Configure 里填写下面 5 项，不要写本机环境变量。"
     }
   ]
 }
