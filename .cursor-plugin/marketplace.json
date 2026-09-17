@@ -12,6 +12,11 @@
       "name": "aihelp-bridge",
       "source": "plugins/aihelp-bridge",
       "description": "须连公司内网或 VPN。安装完成后立刻在插件 Configure 里填写下面 5 项，不要写本机环境变量。"
+    },
+    {
+      "name": "aihelp-stack",
+      "source": "plugins/aihelp-stack",
+      "description": "须连公司内网或 VPN。安装完成后立刻在插件 Configure 里填写下面 5 项，不要写本机环境变量。"
     }
   ]
 }
