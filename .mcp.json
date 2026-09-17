@@ -11,14 +11,14 @@
     "aihelp-account": {
       "url": "http://${AIHELP_MCP_HOST}:18102/mcp",
       "headers": {
-        "Authorization": "Basic ${AIHELP_MCP_BASIC}"
+        "Authorization": "Basic ${AIHELP_MCP_USER}:${AIHELP_MCP_PASS}"
       },
       "type": "http"
     },
     "aihelp-wiki": {
       "url": "http://${AIHELP_MCP_HOST}:18103/mcp",
       "headers": {
-        "Authorization": "Basic ${AIHELP_MCP_BASIC}"
+        "Authorization": "Basic ${AIHELP_MCP_USER}:${AIHELP_MCP_PASS}"
       },
       "type": "http"
     },
@@ -32,21 +32,21 @@
     "aihelp-jenkins": {
       "url": "http://${AIHELP_MCP_HOST}:18105/mcp",
       "headers": {
-        "Authorization": "Basic ${AIHELP_MCP_BASIC}"
+        "Authorization": "Basic ${AIHELP_MCP_USER}:${AIHELP_MCP_PASS}"
       },
       "type": "http"
     },
     "aihelp-zentao": {
       "url": "http://${AIHELP_MCP_HOST}:18106/mcp",
       "headers": {
-        "Authorization": "Basic ${AIHELP_MCP_BASIC}"
+        "Authorization": "Basic ${AIHELP_MCP_USER}:${AIHELP_MCP_PASS}"
       },
       "type": "http"
     },
     "aihelp-elk": {
       "url": "http://${AIHELP_MCP_HOST}:18107/mcp",
       "headers": {
-        "Authorization": "Basic ${AIHELP_MCP_BASIC}"
+        "Authorization": "Basic ${AIHELP_MCP_USER}:${AIHELP_MCP_PASS}"
       },
       "type": "http"
     },
@@ -64,7 +64,7 @@
     "aihelp-langfuse": {
       "url": "http://${AIHELP_MCP_HOST}:18111/mcp",
       "headers": {
-        "Authorization": "Basic ${AIHELP_LANGFUSE_MCP_BASIC}"
+        "Authorization": "Basic ${AIHELP_LANGFUSE_MCP_USER}:${AIHELP_LANGFUSE_MCP_PASS}"
       },
       "type": "http"
     }
