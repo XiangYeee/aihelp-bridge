@@ -1,4 +1,0 @@
-interface:
-  display_name: "aihelp-bug"
-  short_description: "AIHelp bug 排查技能。用于规范化根因分析、异常链路核查、证据闭环和分级排障结论输出。"
-  default_prompt: "AIHelp bug 排查技能。用于规范化根因分析、异常链路核查、证据闭环和分级排障结论输出。"

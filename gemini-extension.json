@@ -1,6 +1,6 @@
 {
   "name": "aihelp-bridge",
-  "version": "0.4.2",
+  "version": "0.4.4",
   "description": "须连公司内网或 VPN。安装时填写 5 项 settings（不会读取本机环境变量），值不要带 Basic/Bearer/AccessKey 前缀。\n1. AIHELP_MCP_HOST：MCP 网关主机或 IP，不要 http:// 和端口，向同事索取\n2. AIHELP_MCP_BASIC：echo -n 'user:password' | base64，只填 Base64\n3. AIHELP_GITLAB_MCP_TOKEN：GitLab Access Tokens，权限含 api，只填 token\n4. JUMPSERVER_MCP_ACCESSKEY：JumpServer API Key，填 id:secret\n5. AIHELP_LANGFUSE_MCP_BASIC：Langfuse MCP 的 Base64(user:password)",
   "contextFileName": "GEMINI.md",
   "settings": [
@@ -12,7 +12,7 @@
     },
     {
       "name": "AIHelp MCP Basic",
-      "description": "account/wiki/jenkins/zentao/elk 的 HTTP Basic。echo -n 'user:password' | base64，不要加 Basic 前缀。",
+      "description": "account/wiki/jenkins/zentao/elk/es 的 HTTP Basic。echo -n 'user:password' | base64，不要加 Basic 前缀。",
       "envVar": "AIHELP_MCP_BASIC",
       "sensitive": true
     },
@@ -91,6 +91,12 @@
       "httpUrl": "http://${AIHELP_MCP_HOST}:18111/mcp",
       "headers": {
         "Authorization": "Basic ${AIHELP_LANGFUSE_MCP_BASIC}"
+      }
+    },
+    "aihelp-es": {
+      "httpUrl": "http://${AIHELP_MCP_HOST}:18112/mcp",
+      "headers": {
+        "Authorization": "Basic ${AIHELP_MCP_BASIC}"
       }
     }
   }

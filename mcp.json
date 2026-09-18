@@ -56,6 +56,12 @@
       "headers": {
         "Authorization": "Basic ${AIHELP_LANGFUSE_MCP_BASIC}"
       }
+    },
+    "aihelp-es": {
+      "url": "http://${AIHELP_MCP_HOST}:18112/mcp",
+      "headers": {
+        "Authorization": "Basic ${AIHELP_MCP_BASIC}"
+      }
     }
   }
 }

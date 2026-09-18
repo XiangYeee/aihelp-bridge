@@ -2,22 +2,22 @@
 
 ## 结论
 
-不是等两天。Cursor 云端把市场记成了旧仓库、旧目录，不会自动跟着 GitHub 改名更新。
+不是等两天。Cursor 云端把市场记成了改名前的仓库和目录，不会自动跟着 GitHub 改名更新。
 
-GitHub 现在：`XiangYeee/aihelp-bridge`，插件目录：`plugins/aihelp-bridge`。  
-Cursor 云端还在用：仓库 `XiangYeee/aihelp-stack`，目录 `plugins/aihelp-stack`。
+GitHub 现在：`XiangYeee/aihelp-bridge`，插件目录只保留：`plugins/aihelp-bridge`。  
+Cursor 必须加这个新地址。改名前的市场记录不要再留。
 
-旧地址会重定向到新仓库，所以 Cursor 拉到的是新代码，但还去找 `plugins/aihelp-stack`。这个目录没有就会 `ENOENT`，看起来像「导入不了」。
+若 Cursor 还在用改名前的仓库地址：旧 URL 会重定向到新仓库，但会去找已经删掉的旧插件目录，于是 `ENOENT`，看起来像「导入不了」。
 
 界面里删市场若返回 `removeMarketplace not_found`，说明云端旧记录没删掉，再加新地址会被当成同一个市场。
 
-## 正确处理（长期方案）
+## 正确处理
 
-1. Cursor → Customize → Plugins，把旧的 `aihelp-stack` / `xiangyeee-aihelp-stack` 删掉。删不掉就 Reload Window 再删。
+1. Cursor → Customize → Plugins，把不是 **AIHelp Bridge** 的旧市场/旧插件删掉。删不掉就 Reload Window 再删。
 2. 再添加：`https://github.com/XiangYeee/aihelp-bridge`
-3. 能看到 **AIHelp Bridge** 并 Configure 之后，仓库里的 `plugins/aihelp-stack` 就可以删，只留 `plugins/aihelp-bridge`。
+3. 清单里只能看到 **AIHelp Bridge**（`plugins/aihelp-bridge`）。
 
-不要再用 `https://github.com/XiangYeee/aihelp-stack`。
+不要再用改名前的 GitHub 仓库地址。
 
 界面里如果出现两个都叫 AIHelp Bridge，是清单里曾经同时列出了两份插件、显示名又都写成 Bridge。现在只列 `aihelp-bridge`。若还看到「AIHelp Bridge（旧）」，删那条。
 
@@ -25,10 +25,7 @@ Cursor 个人 marketplace 第一次加成功后，经常把快照钉在旧 commi
 
 ## 本机缓存
 
-导入失败时先清，再 Reload：
-
-- `~/.cursor/plugins/marketplaces/github.com/xiangyeee/aihelp-stack`
-- `~/.cursor/plugins/cache/xiangyeee-aihelp-stack`
+导入失败时，清掉 `~/.cursor/plugins/marketplaces/` 和 `~/.cursor/plugins/cache/` 里与旧市场对应的目录，再 Reload。只保留 `aihelp-bridge`。
 
 ## Cursor 清单（不要再改乱）
 
@@ -40,6 +37,4 @@ Cursor 个人 marketplace 第一次加成功后，经常把快照钉在旧 commi
 
 不要删根目录 `plugin.json` 只留 marketplace。也不要把 `source` 改成 `./plugins/...` 就当官方模板。
 
-## `plugins/aihelp-stack` 是什么
-
-过渡目录，给云端还在找旧路径的人用。不是产品名，不能长期当正式目录。新导入成功后删掉。
+正式插件只有 `plugins/aihelp-bridge`。不要再加第二份插件目录或兼容副本。

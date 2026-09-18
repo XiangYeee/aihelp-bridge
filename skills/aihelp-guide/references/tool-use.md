@@ -14,6 +14,10 @@
 - 查询运行日志时，使用 `aihelp-elk` MCP。
 - 使用`aihelp-elk` MCP 必须确认好问题时间，按照时间区间搜索，避免返回大量噪音日志。
 
+### aihelp-es MCP
+- 查询业务 Elasticsearch（Cerebro / Kibana console / 直连 ES）时，使用 `aihelp-es` MCP。
+- 应用运行日志仍走 `aihelp-elk`，不要用 `aihelp-es` 查日志。
+
 > #### Service -> Index 对应表
 >
 > 找不到对应索引时自行推断。

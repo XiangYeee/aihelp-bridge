@@ -7,7 +7,7 @@
 配置方法：将下列 5 项写入本机环境变量。值不要带 `Basic` / `Bearer` / `AccessKey` 前缀。
 
 1. `AIHELP_MCP_HOST`：MCP 网关主机名或 IP。不要写 `http://`，不要写端口。向同事或内部文档索取。
-2. `AIHELP_MCP_BASIC`：account / wiki / jenkins / zentao / elk 的 HTTP Basic。生成：`echo -n 'user:password' | base64`，只填 Base64。
+2. `AIHELP_MCP_BASIC`：account / wiki / jenkins / zentao / elk / es 的 HTTP Basic。生成：`echo -n 'user:password' | base64`，只填 Base64。
 3. `AIHELP_GITLAB_MCP_TOKEN`：公司 GitLab → Preferences → Access Tokens，权限含 `api`。只填 token。
 4. `JUMPSERVER_MCP_ACCESSKEY`：JumpServer 个人中心 API Key。填 `id:secret`。
 5. `AIHELP_LANGFUSE_MCP_BASIC`：Langfuse MCP 的 Base64(user:password)。生成方式同第 2 项。
@@ -47,7 +47,7 @@ Ask a teammate or internal docs for the gateway address used by `aihelp-mcp`.
 
 ### `AIHELP_MCP_BASIC`
 
-HTTP Basic credential for `aihelp-account`, `aihelp-wiki`, `aihelp-jenkins`, `aihelp-zentao`, `aihelp-elk`.
+HTTP Basic credential for `aihelp-account`, `aihelp-wiki`, `aihelp-jenkins`, `aihelp-zentao`, `aihelp-elk`, `aihelp-es`.
 
 1. Get the MCP HTTP username and password from your team (this is MCP gateway auth, not a product login).
 2. Encode `user:password` as Base64:
