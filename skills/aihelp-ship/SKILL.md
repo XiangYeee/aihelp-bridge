@@ -12,7 +12,7 @@ compatibility: |
 
 发版与上线 skill：**自然语言意图 → 选配方 → 原子步骤（git_local + MCP）**。
 
-零配置：无需项目级配置文件；鉴权仅 `mcp.json`；Jenkins job 与构建类型由 MCP 推断。
+零配置：无需项目级配置文件；鉴权由宿主 MCP 配置或环境变量提供；Jenkins job 先查固化表，其余由 MCP 推断。
 
 ## 配方路由
 
@@ -39,11 +39,13 @@ compatibility: |
 
 ## 全局执行原则
 
-1. **零配置**：鉴权仅 `mcp.json`。
+1. **零配置**：鉴权由宿主 MCP 配置或环境变量提供，不在 skill 内维护 token。
 2. **test-release 本地 git**：只用 `scripts/git_local.py`，禁止 ad-hoc git 替代 merge/push。`--dev-branch` 仅在用户明确说出源分支名时传入，默认自动识别（含 `feature/*` 与 `fix/*`）。
 3. **远程 API**：只用 MCP，禁止 curl 直连 GitLab/Jenkins/禅道。
-4. **test-release 门禁**：MR merge 失败 → 不触发 Jenkins；工作区不干净 → 停止。
-5. **merge-notify**：默认**不** `gitlab_mr_merge`、不代替发群；输出可复制正文。
+4. **test-release 门禁**：MR merge 失败 → 不触发 Jenkins；工作区不干净 → 停止（冲突暂停除外）。
+5. **本地 merge 冲突**：**禁止** `git merge --abort`、**禁止**为清场切回开发分支。脚本会停在本地临时分支上；Agent 先尝试自动解决简单冲突并汇报改动，解决不了再等人；用户处理完后用 `resume-mr-push` 继续，不要重跑 `prepare-mr-push`。详见 [test-release.md](references/recipes/test-release.md)「冲突处理」。
+6. **Jenkins job 固化**：[jenkins-jobs.md](references/jenkins-jobs.md) 命中的仓库不要用 `jenkins_match_job` 的 `best`。`Server_DotNetCore` → `local_backend_dotnetcore_new`，`aaa` 必须是 [dotnetcore-sites.md](references/dotnetcore-sites.md) 原样字符串（`JobCenter` 不是 `jobcenter`）。`FastGPT` / **AIHelp FastGPT** → `local_backend_aihelp-fastgpt`（multibranch），禁止 `local_backend_fastgpt`。对不上就停。
+7. **merge-notify**：默认**不** `gitlab_mr_merge`、不代替发群；输出可复制正文。
 
 ## 原子能力
 

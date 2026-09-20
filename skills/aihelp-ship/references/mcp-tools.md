@@ -1,6 +1,6 @@
 # aihelp-ship — GitLab / Jenkins / 禅道 MCP 工具参考
 
-**Server id**（Cursor `mcp.json`）：`aihelp-gitlab`、`aihelp-jenkins`、`aihelp-zentao`。
+**Server id**：`aihelp-gitlab`、`aihelp-jenkins`、`aihelp-zentao`。
 
 若使用 HTTP 回退，在工作区根目录 `aihelp-mcp.yaml` 中配置：
 
@@ -83,6 +83,8 @@ aihelp-zentao:
 
 test-release 优先用 `prepare-mr-push` JSON 的 `project_path` 作为 `repository_path`；仅构建场景可用当前仓库 remote 推断。
 
+固化 job 见 [jenkins-jobs.md](jenkins-jobs.md)。`Backend/Server_DotNetCore` **固定**用 `local_backend_dotnetcore_new`；`ai-agent/FastGPT` / **AIHelp FastGPT** **固定**用 `local_backend_aihelp-fastgpt`（禁止 `local_backend_fastgpt`）。不要用本工具返回的 `best`。站点见 [dotnetcore-sites.md](dotnetcore-sites.md)。
+
 ### jenkins_match_parameter_choices
 
 | 字段 | 值 |
@@ -91,6 +93,8 @@ test-release 优先用 `prepare-mr-push` JSON 的 `project_path` 作为 `reposit
 | arguments | `job_full_name`, `parameter_name`, `input` |
 
 将用户站点输入与 job 参数 choices 匹配。支持逗号分隔、通配符（`consumer*`）、`all` / `全部`。返回 `values`、`warnings`。
+
+`local_backend_dotnetcore_new` 的 `aaa` 读不到 choices。`Server_DotNetCore` 站点以 [dotnetcore-sites.md](dotnetcore-sites.md) 为准，不要用本工具的空结果去猜大小写。
 
 ### jenkins_get_job_parameters
 
@@ -116,11 +120,11 @@ test-release 优先用 `prepare-mr-push` JSON 的 `project_path` 作为 `reposit
 
 | build_type | 触发方式 |
 |------------|----------|
-| `parametrized` | `job_full_name` = 父 job；`parameters` 含 branch、site、ACTION |
+| `parametrized` | `job_full_name` = 父 job；其它仓库 `parameters` 含 branch、site、ACTION；`Server_DotNetCore` 用 `{branch, aaa, Re_clone: no}` |
 | `multibranch` | `job_full_name` = `{parent_job}/{branch}`；`parameters` = `{}` |
 | `freestyle` | `job_full_name` = job；`parameters` = `{}` |
 
-**parametrized 示例**（参数名以 job 为准）：
+**parametrized 示例**（`Server_DotNetCore`；其它 job 参数名以定义为准）：
 
 ```json
 {
@@ -128,16 +132,16 @@ test-release 优先用 `prepare-mr-push` JSON 的 `project_path` 作为 `reposit
   "parameters": {
     "branch": "test_0710",
     "aaa": ["elva"],
-    "ACTION": "build"
+    "Re_clone": "no"
   }
 }
 ```
 
-**multibranch 示例**（分支名在 job 路径中，无构建参数）：
+**multibranch 示例**（分支名在 job 路径中，无构建参数；FastGPT 同此）：
 
 ```json
 {
-  "job_full_name": "local_backend_some_service/test_0710",
+  "job_full_name": "local_backend_aihelp-fastgpt/test_0710",
   "parameters": {}
 }
 ```
@@ -176,13 +180,12 @@ test-release 优先用 `prepare-mr-push` JSON 的 `project_path` 作为 `reposit
 
 ## 调用方式
 
-1. **优先**：IDE `CallMcpTool`（server = `aihelp-gitlab` / `aihelp-jenkins`）。
-2. **回退**：`python3 .agents/skills/_shared/scripts/mcp_call.py --server aihelp-gitlab --tool gitlab_whoami --args '{}'`
+用宿主已连接的 MCP 工具调用，server 为 `aihelp-gitlab` / `aihelp-jenkins` / `aihelp-zentao`。不要 curl 直连，也不要在 skill 内写 token。
 
-鉴权由 `mcp.json` 的 `Authorization` 头提供，skill 内不写 token。
+鉴权由宿主 MCP 配置或环境变量提供。
 
 ---
 
 ## MCP 版本说明
 
-以下能力需 **aihelp-mcp 较新版本**（GitLab `remove_source_branch` + merge 重试；Jenkins `jenkins_match_job` / `jenkins_match_parameter_choices`）。部署前用 `GetMcpTools` 核对 schema；若工具或参数缺失，可暂用手工 `jenkins_list_jobs` + `jenkins_get_job_parameters` 降级，但不要再做 Agent 层 merge 重试。
+以下能力需 **aihelp-mcp 较新版本**（GitLab `remove_source_branch` + merge 重试；Jenkins `jenkins_match_job` / `jenkins_match_parameter_choices`）。调用前用 MCP 工具列表或内网 `aihelp-mcp` 仓库中 `services/*/README.md` 核对最新 schema；若工具或参数缺失，可暂用手工 `jenkins_list_jobs` + `jenkins_get_job_parameters` 降级，但不要再做 Agent 层 merge 重试。

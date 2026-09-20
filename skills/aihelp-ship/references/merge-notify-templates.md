@@ -7,9 +7,9 @@
 ## 单需求 · 单项目（Story）
 
 ```
-12345 【示例】单项目需求标题
-禅道：<zentao_view_url>
-合并：<gitlab_mr_url>/diffs
+21434 【B站私有化】企微账号换绑应用后支持过滤历史玩家消息 
+禅道：https://pm.aihelp.net/story-view-21434.html?tid=7r60img8
+合并：https://git.aihelp.net/Backend/Server_DotNetCore/-/merge_requests/18130/diffs
 
 今晚上线，帮忙合并
 ```
@@ -17,9 +17,9 @@
 ## 单需求 · 单项目（Bug）
 
 ```
-9526 【示例】单项目缺陷标题
-禅道： <zentao_view_url>
-合并： <gitlab_mr_url>/diffs
+9526 【是否已解决】按钮的语言与用户设置的语言不一致，帮忙查看问题原因
+禅道： https://pm.aihelp.net/bug-view-9526.html?tid=7r60img8
+合并： https://git.aihelp.net/Backend/aihelp_server_golang/-/merge_requests/1747/diffs
 
 今晚上线，帮忙合并
 ```
@@ -27,10 +27,10 @@
 ## 单需求 · 多环境
 
 ```
-21752 【示例】多环境需求标题
-禅道：<zentao_view_url>
-B站私有化合并：<gitlab_mr_url_a>/diffs
-国际国内合并：<gitlab_mr_url_b>/diffs
+21752 AI质检任务需要支持负分段搜索
+禅道：https://pm.aihelp.net/story-view-21752.html?tid=jp99y100
+B站私有化合并：https://git.aihelp.net/Backend/Server_DotNetCore/-/merge_requests/18127/diffs
+国际国内合并：https://git.aihelp.net/Backend/Server_DotNetCore/-/merge_requests/18133/diffs
 今晚上线，帮忙合并
 ```
 
@@ -39,14 +39,14 @@ B站私有化合并：<gitlab_mr_url_a>/diffs
 ## 多需求 · 一条消息
 
 ```
-20516 【示例】需求 A 标题
-禅道：<zentao_view_url_a>
-合并：<gitlab_mr_url_a>
+20516 AI推荐回复功能重构优化
+禅道：https://pm.aihelp.net/story-view-20516.html?tid=fecri7io
+合并：https://git.aihelp.net/Backend/Server_DotNetCore/-/merge_requests/18069
 
-21608 【示例】需求 B 标题
-禅道：<zentao_view_url_b>
-core: <gitlab_mr_url_b>
-fastgpt: <gitlab_mr_url_c>
+21608 人工 AI 助手调用 TH 助手路径调整
+禅道：https://pm.aihelp.net/story-view-21608.html?tid=fecri7io
+core: https://git.aihelp.net/Backend/Server_DotNetCore/-/merge_requests/18071
+fastgpt: https://git.aihelp.net/ai-agent/FastGPT/-/merge_requests/196
 
 晚上上线，帮忙合并
 ```

@@ -10,11 +10,17 @@ Agent 按意图选配方（见 `SKILL.md`），再组合下列原子。
 |------|------|----------------|
 | `check_clean` | `check-clean` | 不干净则 exit 1 |
 | `default_test_branch` | `default-test-branch` | stdout: `test_MMDD` |
-| `prepare_mr_push` | `prepare-mr-push --user U [--test-branch T] [--dev-branch D]` | merge + push；末行 JSON |
+| `merge_status` | `merge-status` | JSON：是否在 merge、冲突文件 |
+| `prepare_mr_push` | `prepare-mr-push --user U [--test-branch T] [--dev-branch D]` | 基于 `origin/test` 建本地临时分支；成功：merge+push+切回并清理；冲突：exit 2，**不 abort**，停在临时分支 |
+| `resume_mr_push` | `resume-mr-push --user U [--test-branch T] [--dev-branch D]` | 临时分支冲突解决后继续：完成 merge commit → push → 切回并清理 |
 
 **dev 分支**：默认自动识别（`feature/*`、`fix/*`）；仅用户明确指定源分支时传 `--dev-branch`。
 
-**`prepare_mr_push` JSON**：`project_path`, `dev_branch`, `test_branch`, `push_branch`
+**退出码**：`0` 成功；`1` 硬错误；`2` 需处理（冲突暂停，工作区留在本地临时分支）。
+
+**成功 JSON**（`status: ok`）：`project_path`, `dev_branch`, `test_branch`, `push_branch`
+
+**冲突 JSON**（`status: conflict`）：同上 + `conflict_files`, `merge_in_progress`, `hint`
 
 ---
 
@@ -43,15 +49,15 @@ Agent 按意图选配方（见 `SKILL.md`），再组合下列原子。
 
 | 原子 | 工具 | 说明 |
 |------|------|------|
-| `match_job` | `jenkins_match_job` | 用 `project_path` 匹配 job，读 `build_type` |
-| `match_sites` | `jenkins_match_parameter_choices` | 用户站点输入 → 合法 choices |
+| `match_job` | `jenkins_match_job` | 用 `project_path` 匹配 job；先查 [jenkins-jobs.md](jenkins-jobs.md)。`Server_DotNetCore` 固定 `local_backend_dotnetcore_new`；`FastGPT` / AIHelp FastGPT 固定 `local_backend_aihelp-fastgpt` |
+| `match_sites` | `jenkins_match_parameter_choices` | 其它 parametrized 仓库自动对 choices；`Server_DotNetCore` 对照 [dotnetcore-sites.md](dotnetcore-sites.md)；FastGPT 无站点 |
 | `get_parameters` | `jenkins_get_job_parameters` | 确认 branch/site 参数名（辅助） |
 | `infer_job` | `jenkins_get_job` / `jenkins_list_jobs` | 仅 `match_job` 无候选时兜底 |
 | `trigger_build` | `jenkins_trigger_build` | 按 `build_type` 触发（见 mcp-tools.md） |
 
 **build_type 与触发**：
 
-- `parametrized` → `trigger_build(parent_job, {branch, site, ACTION})`
+- `parametrized` → `trigger_build(parent_job, {branch, site, ACTION})`；`Server_DotNetCore` 见 [jenkins-jobs.md](jenkins-jobs.md)（`aaa` + `Re_clone: no`）
 - `multibranch` → `trigger_build("{parent}/{branch}", {})`
 - `freestyle` → `trigger_build(job, {})`
 
@@ -83,8 +89,10 @@ Agent 按意图选配方（见 `SKILL.md`），再组合下列原子。
 
 **test-release**
 
-1. 含 git 步骤 → 先 `check_clean`
-2. `mr_merge` 失败 → 禁止 `trigger_build`
+1. 含 git 步骤 → 先 `check_clean`（冲突暂停后恢复时用 `resume_mr_push`，不再要求启动前干净）
+2. 本地 merge 冲突 → 不 abort、不切回；Agent 先解，再 `resume_mr_push`
+3. `mr_merge` 失败 → 禁止 `trigger_build`
+4. Job 固化见 [jenkins-jobs.md](jenkins-jobs.md)。`Server_DotNetCore` 站点必须是 [dotnetcore-sites.md](dotnetcore-sites.md) 精确拼写，否则禁止 `trigger_build`
 
 **merge-notify**
 
