@@ -88,11 +88,13 @@
 ### aihelp-gitlab MCP
 
 - 查询 GitLab 仓库、分支、MR 或流水线时，使用 `aihelp-gitlab` MCP。
+- 查服务器发布记录用 `gitlab_tags_list`。正式环境按 `message` 含「正式」、不含「B站」，再按 `message` 日期取最新 tag；B 站按 `message` 含「B站」。代码对照规则见 [env-policy.md](env-policy.md)。
 
 ### aihelp-jenkins MCP
 
 - 测试发版、触发 localjenkins 构建时，转到 `aihelp-ship`，不要在 guide 里直接拼 job 名。
 - 测试发版使用的 Jenkins 由 `aihelp-jenkins` MCP 对接（公司内网 Jenkins）。
+- 排查 `test` 环境代码时，用该仓库对应 job **最近一次成功构建**的 `branch` 参数（见 [env-policy.md](env-policy.md)），不要用当前工作区分支。
 
 ### aihelp-wiki MCP
 

@@ -11,4 +11,5 @@ description: AIHelp bug investigation skill for AIHelp-related tasks that requir
 
 - 排查问题规则：先读 [references/evidence-policy.md](references/evidence-policy.md)
 - 排查问题输出格式：先读 [references/output-format.md](references/output-format.md)
+- 代码对照分支：先读 `aihelp-guide` 的 [env-policy.md](../aihelp-guide/references/env-policy.md)「代码对照分支」
 - FastGPT/gpt-rag 客诉回复问题：先读 [references/fastgpt-rag-troubleshooting.md](references/fastgpt-rag-troubleshooting.md)

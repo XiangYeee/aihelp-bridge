@@ -20,8 +20,25 @@
 
 ## 预发环境
 
-- `intl_prerelease` 使用自身预发代码和配置环境，但数据库使用和 `aihelp`相同。
-- `cn_prerelease` 使用自身预发代码和配置环境，但数据库使用和 `aihelpcn`相同。
+- `intl_prerelease` 配置走自身预发环境，数据库与 `aihelp` 相同；**代码对照与 `aihelp` 相同**（见下方）。
+- `cn_prerelease` 配置走自身预发环境，数据库与 `aihelpcn` 相同；**代码对照与 `aihelpcn` 相同**（见下方）。
+
+## 代码对照分支
+
+排查或对照代码时，必须读该环境对应 ref 的远端内容，禁止用当前工作区 `feature/*` / `fix/*` 冒充环境代码。只有 `localhost` 联调，或用户明确说看当前分支 / 未上测试的 MR 时，才用工作区或用户指定的源分支，并在结论里标明。
+
+不要为排查 `git checkout` 切走用户正在开发的分支。有本地仓时：`git fetch` 后 `git show <ref>:<path>` / `git grep <pattern> <ref>`。无本地仓时用 GitLab `/-/blob/<ref>/...`。
+
+用户已给出分支或 tag → 用用户的。否则按环境解析：
+
+- `test`：该仓库在 `aihelp-jenkins`（localjenkins）**最近一次成功构建**的 `branch`。job 解析同 `aihelp-ship` 的 [jenkins-jobs.md](../../aihelp-ship/references/jenkins-jobs.md)。parametrized 用 `jenkins_get_job_builds` 的 `lastSuccessfulBuild`，再 `jenkins_get_build` 读 `parameters.branch`；multibranch 用最近成功的 `{parent}/{branch}` 中的 branch。拿不到就停，不要用日历 `test_MMDD` 猜。
+- `aihelp`、`aihelpcn`、`intl_prerelease`、`cn_prerelease`：默认 `develop`（仓内没有 `develop` 再用 `gitlab_project_get.default_branch`）。**仅当 develop 上的代码与问题现象明显不符**时，才查发布记录：`gitlab_tags_list`，按 `message` 过滤含「正式」、不含「B站」的 tag，按 `message` 里的日期取最新（如同日多条取列表最前），再对照该 tag 的代码。
+- `bilibili`：仓内有 `release_B站` 用它，否则 `release_b`。不符时同样用 tag，`message` 含「B站」。
+- `ml`：`release_ml_cn`
+- `aviagame`：`release_aviagame`
+- `aosu`：`release_aosu`
+
+发布 tag 示例：`v5.7.7.0920`，`message` 为 `2026-9-20  正式`；B 站为 `v5.7.0.0920-b`，`message` 含 `B站`。
 
 ## ilocalize / go2global 环境规则
 
