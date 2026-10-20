@@ -99,6 +99,7 @@
 ### aihelp-wiki MCP
 
 - 查询 wiki 时，使用 `aihelp-wiki` MCP。
+- 给出要发布的站点时，按 [publish-sites.md](publish-sites.md) 先读「后端所有服务列表」。
 
 ### jumpserver MCP
 

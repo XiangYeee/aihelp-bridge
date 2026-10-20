@@ -11,3 +11,4 @@ description: AIHelp environment, workflow, and tool-routing skill. Trigger when 
 
 - 环境规则：读取 [references/env-policy.md](references/env-policy.md)
 - 工具使用规则：读取 [references/tool-use.md](references/tool-use.md)
+- 要给出发布站点时：读取 [references/publish-sites.md](references/publish-sites.md)，并按其中的 wiki 页重新核对站点名
