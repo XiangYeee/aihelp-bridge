@@ -20,7 +20,7 @@
         "aihelp gitlab",
         "aihelp jenkins"
       ],
-      "version": "0.4.2",
+      "version": "0.4.6",
       "displayName": "AIHelp Bridge"
     }
   ]
