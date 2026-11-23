@@ -1,0 +1,196 @@
+{
+  "mcpServers": {
+    "zabbix-mcp": {
+      "url": "http://${AIHELP_MCP_HOST}:18100/mcp",
+      "variables": [
+        {
+          "name": "AIHELP_MCP_HOST",
+          "title": "AIHelp MCP Host",
+          "description": "MCP 网关主机名或 IP，不要写 http:// 和端口。向同事或内部文档索取。"
+        }
+      ]
+    },
+    "aihelp-apollo": {
+      "url": "http://${AIHELP_MCP_HOST}:18101/mcp",
+      "variables": [
+        {
+          "name": "AIHELP_MCP_HOST",
+          "title": "AIHelp MCP Host",
+          "description": "MCP 网关主机名或 IP，不要写 http:// 和端口。向同事或内部文档索取。"
+        }
+      ]
+    },
+    "aihelp-account": {
+      "url": "http://${AIHELP_MCP_HOST}:18102/mcp",
+      "headers": {
+        "Authorization": "Basic ${AIHELP_MCP_BASIC}"
+      },
+      "variables": [
+        {
+          "name": "AIHELP_MCP_HOST",
+          "title": "AIHelp MCP Host",
+          "description": "MCP 网关主机名或 IP，不要写 http:// 和端口。向同事或内部文档索取。"
+        },
+        {
+          "name": "AIHELP_MCP_BASIC",
+          "title": "AIHelp MCP Basic",
+          "description": "account/wiki/jenkins/zentao/elk/es 的 HTTP Basic。执行 echo -n 'user:password' | base64，只填 Base64，不要加 Basic 前缀。"
+        }
+      ]
+    },
+    "aihelp-wiki": {
+      "url": "http://${AIHELP_MCP_HOST}:18103/mcp",
+      "headers": {
+        "Authorization": "Basic ${AIHELP_MCP_BASIC}"
+      },
+      "variables": [
+        {
+          "name": "AIHELP_MCP_HOST",
+          "title": "AIHelp MCP Host",
+          "description": "MCP 网关主机名或 IP，不要写 http:// 和端口。向同事或内部文档索取。"
+        },
+        {
+          "name": "AIHELP_MCP_BASIC",
+          "title": "AIHelp MCP Basic",
+          "description": "account/wiki/jenkins/zentao/elk/es 的 HTTP Basic。执行 echo -n 'user:password' | base64，只填 Base64，不要加 Basic 前缀。"
+        }
+      ]
+    },
+    "aihelp-gitlab": {
+      "url": "http://${AIHELP_MCP_HOST}:18104/mcp",
+      "headers": {
+        "Authorization": "Bearer ${AIHELP_GITLAB_MCP_TOKEN}"
+      },
+      "variables": [
+        {
+          "name": "AIHELP_MCP_HOST",
+          "title": "AIHelp MCP Host",
+          "description": "MCP 网关主机名或 IP，不要写 http:// 和端口。向同事或内部文档索取。"
+        },
+        {
+          "name": "AIHELP_GITLAB_MCP_TOKEN",
+          "title": "GitLab MCP Token",
+          "description": "公司 GitLab → Preferences → Access Tokens，权限含 api。只填 token，不要加 Bearer 前缀。"
+        }
+      ]
+    },
+    "aihelp-jenkins": {
+      "url": "http://${AIHELP_MCP_HOST}:18105/mcp",
+      "headers": {
+        "Authorization": "Basic ${AIHELP_MCP_BASIC}"
+      },
+      "variables": [
+        {
+          "name": "AIHELP_MCP_HOST",
+          "title": "AIHelp MCP Host",
+          "description": "MCP 网关主机名或 IP，不要写 http:// 和端口。向同事或内部文档索取。"
+        },
+        {
+          "name": "AIHELP_MCP_BASIC",
+          "title": "AIHelp MCP Basic",
+          "description": "account/wiki/jenkins/zentao/elk/es 的 HTTP Basic。执行 echo -n 'user:password' | base64，只填 Base64，不要加 Basic 前缀。"
+        }
+      ]
+    },
+    "aihelp-zentao": {
+      "url": "http://${AIHELP_MCP_HOST}:18106/mcp",
+      "headers": {
+        "Authorization": "Basic ${AIHELP_MCP_BASIC}"
+      },
+      "variables": [
+        {
+          "name": "AIHELP_MCP_HOST",
+          "title": "AIHelp MCP Host",
+          "description": "MCP 网关主机名或 IP，不要写 http:// 和端口。向同事或内部文档索取。"
+        },
+        {
+          "name": "AIHELP_MCP_BASIC",
+          "title": "AIHelp MCP Basic",
+          "description": "account/wiki/jenkins/zentao/elk/es 的 HTTP Basic。执行 echo -n 'user:password' | base64，只填 Base64，不要加 Basic 前缀。"
+        }
+      ]
+    },
+    "aihelp-elk": {
+      "url": "http://${AIHELP_MCP_HOST}:18107/mcp",
+      "headers": {
+        "Authorization": "Basic ${AIHELP_MCP_BASIC}"
+      },
+      "variables": [
+        {
+          "name": "AIHELP_MCP_HOST",
+          "title": "AIHelp MCP Host",
+          "description": "MCP 网关主机名或 IP，不要写 http:// 和端口。向同事或内部文档索取。"
+        },
+        {
+          "name": "AIHELP_MCP_BASIC",
+          "title": "AIHelp MCP Basic",
+          "description": "account/wiki/jenkins/zentao/elk/es 的 HTTP Basic。执行 echo -n 'user:password' | base64，只填 Base64，不要加 Basic 前缀。"
+        }
+      ]
+    },
+    "aihelp-db": {
+      "url": "http://${AIHELP_MCP_HOST}:18108/mcp",
+      "variables": [
+        {
+          "name": "AIHELP_MCP_HOST",
+          "title": "AIHelp MCP Host",
+          "description": "MCP 网关主机名或 IP，不要写 http:// 和端口。向同事或内部文档索取。"
+        }
+      ]
+    },
+    "jumpserver": {
+      "url": "http://${AIHELP_MCP_HOST}:18109/mcp",
+      "headers": {
+        "Authorization": "AccessKey ${JUMPSERVER_MCP_ACCESSKEY}"
+      },
+      "variables": [
+        {
+          "name": "AIHELP_MCP_HOST",
+          "title": "AIHelp MCP Host",
+          "description": "MCP 网关主机名或 IP，不要写 http:// 和端口。向同事或内部文档索取。"
+        },
+        {
+          "name": "JUMPSERVER_MCP_ACCESSKEY",
+          "title": "JumpServer AccessKey",
+          "description": "JumpServer 个人中心 API Key，填 id:secret，不要加 AccessKey 前缀。"
+        }
+      ]
+    },
+    "aihelp-langfuse": {
+      "url": "http://${AIHELP_MCP_HOST}:18111/mcp",
+      "headers": {
+        "Authorization": "Basic ${AIHELP_LANGFUSE_MCP_BASIC}"
+      },
+      "variables": [
+        {
+          "name": "AIHELP_MCP_HOST",
+          "title": "AIHelp MCP Host",
+          "description": "MCP 网关主机名或 IP，不要写 http:// 和端口。向同事或内部文档索取。"
+        },
+        {
+          "name": "AIHELP_LANGFUSE_MCP_BASIC",
+          "title": "Langfuse MCP Basic",
+          "description": "Langfuse MCP 的 Base64(user:password)，不要加 Basic 前缀。"
+        }
+      ]
+    },
+    "aihelp-es": {
+      "url": "http://${AIHELP_MCP_HOST}:18112/mcp",
+      "headers": {
+        "Authorization": "Basic ${AIHELP_MCP_BASIC}"
+      },
+      "variables": [
+        {
+          "name": "AIHELP_MCP_HOST",
+          "title": "AIHelp MCP Host",
+          "description": "MCP 网关主机名或 IP，不要写 http:// 和端口。向同事或内部文档索取。"
+        },
+        {
+          "name": "AIHELP_MCP_BASIC",
+          "title": "AIHelp MCP Basic",
+          "description": "account/wiki/jenkins/zentao/elk/es 的 HTTP Basic。执行 echo -n 'user:password' | base64，只填 Base64，不要加 Basic 前缀。"
+        }
+      ]
+    }
+  }
+}

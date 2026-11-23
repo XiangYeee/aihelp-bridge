@@ -98,6 +98,10 @@ gemini extensions install https://github.com/XiangYeee/aihelp-bridge
 # 若安装时跳过了 settings：
 gemini extensions config aihelp-bridge
 
+# Antigravity (agy)
+agy plugin install https://github.com/XiangYeee/aihelp-bridge
+# 安装后因包含 MCP 变量默认处于禁用状态，在 agy 内执行 /plugin 启用并填写 5 项变量
+
 # Grok Build
 # 先加 marketplace，再按插件名安装（不要只贴仓库 URL 就结束）
 grok plugin marketplace add XiangYeee/aihelp-bridge

@@ -32,6 +32,6 @@
 
 ## 配置与技能
 
-Cursor 的 5 项凭据写在插件 Configure，不写本机环境变量。Grok、Codex、Claude 写环境变量。Gemini 在安装时填 settings，不读环境变量。值不要带 `Basic` / `Bearer` / `AccessKey` 前缀。
+Cursor 的 5 项凭据写在插件 Configure，不写本机环境变量。Grok、Codex、Claude 写环境变量。Gemini 在安装时填 settings，不读环境变量。Antigravity（`agy`）读取根目录 `mcp_config.json` 与 `rules/AGENTS.md`，安装后在 `/plugin` 启用并填写 5 项变量。值不要带 `Basic` / `Bearer` / `AccessKey` 前缀。
 
 技能有两份，一起改：`skills/<name>/` 与 `plugins/aihelp-bridge/skills/<name>/`。不要改 `~/.grok/installed-plugins/`、`~/.cursor/plugins/`、`~/.codex/plugins/`。
